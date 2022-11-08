@@ -31,12 +31,12 @@ function searchCity(city) {
 
 function cityData(area) {
     return fetch(
-        `https://api.teleport.org/api/urban_areas/slug:${area}/details/`
+        `https://api.teleport.org/api/urban_areas/slug:san-francisco-bay-area/details`
     );
 }
 
 function citySalaries(area) {
     return fetch(
-        `https://api.teleport.org/api/urban_areas/slug:${area}/salaries/`
+        `https://api.teleport.org/api/urban_areas/slug:san-francisco-bay-area/salaries`
     );
 }
