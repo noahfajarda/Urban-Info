@@ -36,19 +36,9 @@ function searchUrbanAreas(urbanArea) {
         .then((response) => response.json())
         .then((data) => {
             console.log("Details:", data);
-            // follows 'data to use' list on group doc
-            var areaQualities = [];
-            for (var i = 0; i < data.categories.length; i++) {
-                var category = {
-                    "Business Freedom": {
-                        "Buisness Freedom": 2,
-                        "Corruption Freedom": 3,
-                        "Labor Restrictions": 44,
-                    }, // TODO: Add the rest of the categories from group doc
-                    // 11 MORE CATEGORIES
-                };
-                console.log(category);
-            }
+
+            var areaQualities = retrieveCategoryData(data);
+            console.log("Area Qualities:", areaQualities);
             // structure of Area Qualities array:
             // [{"Category": {"SubCategory": "", "SubCategory": "", ...}},
             // {"Category": {"SubCategory": "", "SubCategory": "", ...}},
@@ -104,6 +94,71 @@ function retrieveSalaries(data) {
     }
     // all jobs & salary percentiles
     return salaryDataArray;
+}
+
+function retrieveCategoryData(data) {
+    // DELETE PLACEHOLDER LATER
+    var placeholder = 0;
+    var categories = data.categories;
+    // follows 'data to use' list on group doc
+    var areaQualities = {
+        "Business Freedom": {
+            // add .float_value for each one
+            // note ratings, units, currency
+            "Business Freedom": categories[0].data[0],
+            "Corruption Freedom": categories[0].data[2],
+            "Labor Restrictions": categories[0].data[4],
+        },
+        "City Size": {
+            "UA Population Size": categories[1].data[0],
+            "UA Population Density": categories[1].data[1],
+            "City Center Population Density": categories[1].data[2],
+        },
+        "Cost of Living": {
+            "Consumer Price Index": categories[3].data[0],
+            "Cost of Public Transport": categories[3].data[7],
+            "Cost of Restaurant Meal": categories[3].data[8],
+        },
+        Economy: {
+            "GDP Growth Rate": categories[5].data[2],
+            "GDP Per Capita": categories[5].data[4],
+        },
+        Education: {
+            "Student Happiness": categories[6].data[0],
+            "PISA Ranking": categories[6].data[11],
+            "PISA Ranking Telescore": categories[6].data[12],
+            "Best University": categories[6].data[16],
+            "Best University Rank": categories[6].data[17],
+        },
+        "Health Care": {
+            Cost: categories[7].data[0],
+            Quality: categories[7].data[3],
+        },
+        "Cost of Housing": {
+            "Apartment Rent for Large Apartment": categories[8].data[0],
+            "Apartment Rent for Medium Apartment": categories[8].data[1],
+            "Apartment Rent for Small Apartment": categories[8].data[2],
+            "Rent Index Telescore": categories[8].data[3],
+        },
+        Pollution: {
+            "Air Pollution": categories[15].data[0],
+            Cleanliness: categories[15].data[1],
+            "Water Quality": categories[15].data[2],
+        },
+        Safety: {
+            "Crime Rate": categories[16].data[0],
+            "Gun Death Score": categories[16].data[2],
+            "Gun Ownership Score": categories[16].data[4],
+        },
+        Taxation: {
+            "Income Tax": categories[18].data[2],
+            "Sales Tax": categories[18].data[3],
+        },
+        Traffic: {
+            "Traffic handling [Teleport Score]": categories[19].data[1],
+        },
+    };
+    return areaQualities;
 }
 
 // shortcuts to urban data, urban salaries fetch apis
