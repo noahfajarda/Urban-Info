@@ -33,18 +33,51 @@
         <title>Document</title>
     </head>
 
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+            integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+            crossorigin="anonymous"
+        />
+        <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+            rel="stylesheet"
+        />
+        <!-- google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+        />
+        <link rel="stylesheet" href="assets/style.css" />
+        <title>Document</title>
+    </head>
+
     <body>
-        Goal 1: User searches for an Urban Area ---> they get back salaries of
-        all jobs in area
-        <br />
-        Goal 2: User searches for a city ---> they get back the urban area
-        <br /><br />
-        <h3>for testing:</h3>
-        <br />
-        <em>Urban Area:</em>
-        <p>san francisco bay area</p>
-        <em>City:</em>
-        <p>Irvine</p>
+        <form autocomplete="off" action="/action_page.php">
+            <div class="autocomplete" style="width: 300px">
+                <input
+                    id="myInput"
+                    type="text"
+                    name="urbanArea"
+                    placeholder="Search"
+                />
+            </div>
+            <input type="submit" />
+        </form>
     </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
