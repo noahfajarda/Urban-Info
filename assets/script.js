@@ -36,6 +36,23 @@ function searchUrbanAreas(urbanArea) {
         .then((response) => response.json())
         .then((data) => {
             console.log("Details:", data);
+            // follows 'data to use' list on group doc
+            var areaQualities = [];
+            for (var i = 0; i < data.categories.length; i++) {
+                var category = {
+                    "Business Freedom": {
+                        "Buisness Freedom": 2,
+                        "Corruption Freedom": 3,
+                        "Labor Restrictions": 44,
+                    }, // TODO: Add the rest of the categories from group doc
+                    // 11 MORE CATEGORIES
+                };
+                console.log(category);
+            }
+            // structure of Area Qualities array:
+            // [{"Category": {"SubCategory": "", "SubCategory": "", ...}},
+            // {"Category": {"SubCategory": "", "SubCategory": "", ...}},
+            // ...]
         });
 
     // retrieved salary data of urban area
