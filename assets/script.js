@@ -1,13 +1,22 @@
 // utility function to dynamically create and append elements
-function createEl(element, innerHTML, classes) {
+function createEl(element, innerHTML, id = "", classes = "") {
     var element = document.createElement(element);
     element.innerHTML = innerHTML;
+    // add classes
     if (typeof classes == "object") {
         for (var i = 0; i < classes.length; i++) {
             element.classList.add(classes[i]);
         }
+    } else if (classes === "") {
+        var nothing = 0;
     } else {
         element.classList.add(classes);
+    }
+    // add id
+    if (id !== "") {
+        element.setAttribute("id", id);
+    } else {
+        var nothing2 = 0;
     }
     document.body.appendChild(element);
 }
@@ -50,15 +59,30 @@ userInput.on("keyup", function (event) {
     if (event.key === "Enter") {
         // search for urban area upon enter
         searchUrbanAreas(event.target.value);
+        addUrbanButton(event.target.value);
     }
 });
 
+var urbanAreasHistory = [];
 // retrieve data upon clicking submit button too
 var submitBtn = $("#submitBtn");
 submitBtn.on("click", function (event) {
     var userInput = document.getElementById("myInput").value;
     searchUrbanAreas(userInput);
+    addUrbanButton(userInput);
 });
+
+function addUrbanButton(userInput) {
+    if (!urbanAreasHistory.includes(userInput)) {
+        // add the urban area to history array if non-existant
+        urbanAreasHistory.push(userInput);
+        // prettier-ignore
+        createEl("button", userInput, (id = userInput), (classes = "urbanArea"));
+    } else {
+        console.log("NOT ADDED:", urbanAreasHistory);
+    }
+    console.log(urbanAreasHistory);
+}
 
 // prettier-ignore
 var urbanAreas = ["Aarhus", "Adelaide", "Albuquerque", "Almaty", "Amsterdam", "Anchorage", "Ankara", "Asheville", "Asuncion", "Athens", "Atlanta", "Auckland", "Austin", "Baku", "Bali", "Bangkok", "Barcelona", "Beijing", "Beirut", "Belfast", "Belgrade", "Belize City", "Bengaluru", "Berlin", "Bern", "Birmingham", "Birmingham, AL", "Bogota", "Boise", "Bologna", "Bordeaux", "Boston", "Boulder", "Bozeman", "Bratislava", "Brisbane", "Bristol", "Brussels", "Bucharest", "Budapest", "Buenos Aires", "Buffalo", "Cairo", "Calgary", "Cambridge", "Cape Town", "Caracas", "Cardiff", "Casablanca", "Charleston", "Charlotte", "Chattanooga","Chennai", "Chiang Mai", "Chicago", "Chisinau", "Christchurch", "Cincinnati", "Cleveland", "Cluj-Napoca", "Cologne", "Colorado Springs", "Columbus", "Copenhagen", "Cork", "Curitiba", "Dallas", "Dar es Salaam", "Delhi", "Denver", "Des Moines", "Detroit", "Doha", "Dresden", "Dubai", "Dublin", "Dusseldorf", "Edinburgh", "Edmonton", "Eindhoven", "Eugene", "Florence", "Florianopolis", "Fort Collins", "Frankfurt", "Fukuoka", "Galway", "Gdansk", "Geneva", "Glasgow", "Gothenburg", "Grenoble", "Guadalajara", "Guatemala City", "Halifax", "Hamburg", "Hannover", "Havana", "Helsinki", "Ho Chi Minh City", "Hong Kong", "Honolulu", "Houston", "Hyderabad", "Indianapolis", "Innsbruck", "Istanbul", "Jacksonville", "Jakarta", "Johannesburg", "Kansas City", "Karlsruhe", "Kathmandu", "Kiev", "Kingston", "Knoxville", "Krakow", "Kuala Lumpur", "Lagos", "La Paz", "Las Palmas de Gran Canaria", "Las Vegas", "Lausanne", "Leipzig", "Lille", "Lima", "Lisbon", "Liverpool", "Ljubljana", "London", "Los Angeles", "Louisville", "Luxembourg", "Lviv", "Lyon", "Madison", "Madrid", "Malaga", "Malmo", "Managua", "Manchester", "Manila", "Marseille", "Medellin", "Melbourne", "Memphis", "Mexico City", "Miami", "Milan", "Milwaukee", "Minneapolis-Saint Paul", "Minsk", "Montevideo", "Montreal", "Moscow", "Mumbai", "Munich", "Nairobi", "Nantes", "Naples", "Nashville", "New Orleans", "New York", "Nice", "Nicosia", "Oklahoma City", "Omaha", "Orlando", "Osaka", "Oslo", "Ottawa", "Oulu", "Oxford", "Palo Alto", "Panama", "Paris", "Perth", "Philadelphia", "Phnom Penh", "Phoenix", "Phuket", "Pittsburgh", "Portland, ME", "Portland, OR", "Porto", "Porto Alegre", "Prague", "Providence", "Quito", "Raleigh", "Reykjavik", "Richmond", "Riga", "Rio De Janeiro", "Riyadh", "Rochester", "Rome", "Rotterdam", "Saint Petersburg", "Salt Lake City", "San Antonio", "San Diego", "San Francisco Bay Area", "San Jose", "San Juan", "San Luis Obispo", "San Salvador", "Santiago", "Santo Domingo", "Sao Paulo", "Sarajevo", "Saskatoon", "Seattle", "Seoul", "Seville", "Shanghai", "Singapore", "Skopje", "Sofia", "St. Louis", "Stockholm", "Stuttgart", "Sydney", "Taipei", "Tallinn", "Tampa Bay Area", "Tampere", "Tartu", "Tashkent", "Tbilisi", "Tehran", "Tel Aviv", "The Hague", "Thessaloniki", "Tokyo", "Toronto", "Toulouse", "Tunis", "Turin", "Turku", "Uppsala", "Utrecht", "Valencia", "Valletta", "Vancouver", "Victoria", "Vienna", "Vilnius", "Warsaw", "Washington, D.C.", "Wellington", "Winnipeg", "Wroclaw", "Yerevan", "Zagreb", "Zurich"];
@@ -190,6 +214,7 @@ urbanAreasList()
         console.log("Array of Urban Areas: ", urbanAreaNameList);
     });
 
+// search urban areas
 function searchUrbanAreas(urbanArea) {
     urbanArea = urbanArea.replaceAll(" ", "-");
     console.log(urbanArea);
@@ -218,7 +243,7 @@ function searchUrbanAreas(urbanArea) {
         });
 }
 
-// retrieves all salaries from all occupations of city
+// retrieves all salaries from all occupations of urban area
 function retrieveSalaries(data) {
     var salaryDataArray = [];
     for (var i = 0; i < data.salaries.length; i++) {
@@ -241,7 +266,7 @@ function retrieveSalaries(data) {
     return salaryDataArray;
 }
 
-// retrieves all category data from city
+// retrieves all category data from urban area
 function retrieveCategoryData(data) {
     var categories = data.categories;
     // follows 'data to use' list on group doc

@@ -50,3 +50,9 @@ input[type="submit"] {
     background-color: DodgerBlue !important;
     color: #ffffff;
 }
+
+/* button styling */
+button.urbanArea {
+    height: 50px;
+    margin: 10px;
+}
