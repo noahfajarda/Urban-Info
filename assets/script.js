@@ -1,3 +1,38 @@
+// 
+function createEl(element, innerHTML, classNames, idName) {
+    var element = document.createElement("element");
+    element.innerHTML = `${innerHTML}`;
+    document.body.appendChild(element);
+    element.setAttribute("class", `${classNames}`)
+    element.setAttribute("id", `${idName}`)
+}
+
+var nav1 = createEl("nav", "Is My City Cool?", "border-dark row")
+createEl("a", "About the team", "border-dark")
+createEl("a", "About the project", "border-dark")
+document.appendChild(document.querySelector("#about1"))
+nav1.appendChild(document.querySelector("#about2"))
+
+    // TODO: create column arrangement
+    // https://getbootstrap.com/docs/4.0/components/dropdowns/
+var aside1 = createEl("aside", "", "border-dark", "aside1")
+aside1.innerHTML = `
+<div class="dropdown show">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown link
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>`
+
+createEl("aside", "aside text", "border-dark rounded")
+createEl("div", "first div text", "border-dark row rounded", "div1")
+
+
 // function to create search bars
 // reason: city & urban area event listeners
 function createSearchBar(type) {
