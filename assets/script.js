@@ -38,24 +38,55 @@ function searchUrbanAreas(urbanArea) {
             console.log("Details:", data);
         });
 
+    // retrieved salary data of urban area
     urbanSalaries(urbanArea)
         .then((response) => response.json())
         .then((data) => {
-            console.log("Salaries:", data);
+            // data == salary data
+            // retrieveSalaries polishes/simplifies data
+            var SalaryData = retrieveSalaries(data);
+            console.log("Salary Data Array: ", SalaryData);
+            // structure of Salary Data array:
+            // [{Job Title: "", Salaries: [25th_Percentile, 50th_Percentile, 75th_Percentile]},...]
         });
+}
 
-    // creates list of all possible urban areas in API
-    urbanAreasList()
-        .then((response) => response.json())
-        .then((data) => {
-            var urbanAreaData = data._links["ua:item"];
-            var urbanAreaNameList = [];
-            for (var i = 0; i < data._links["ua:item"].length; i++) {
-                urbanAreaNameList.push(urbanAreaData[i].name);
-            }
-            // All urban Areas
-            console.log(urbanAreaNameList);
+// creates list of all possible urban areas in API
+urbanAreasList()
+    .then((response) => response.json())
+    .then((data) => {
+        var urbanAreaData = data._links["ua:item"];
+        var urbanAreaNameList = [];
+        for (var i = 0; i < data._links["ua:item"].length; i++) {
+            urbanAreaNameList.push(urbanAreaData[i].name);
+        }
+        // All urban Areas
+        console.log("Array of Urban Areas: ", urbanAreaNameList);
+    });
+
+// retrieves all salaries from all occupations of city
+function retrieveSalaries(data) {
+    var salaryDataArray = [];
+
+    for (var i = 0; i < data.salaries.length; i++) {
+        // Job title
+        var jobTitle = data.salaries[i].job.title;
+
+        // Salaries for that job title
+        var salaries = [
+            data.salaries[i].salary_percentiles.percentile_25,
+            data.salaries[i].salary_percentiles.percentile_50,
+            data.salaries[i].salary_percentiles.percentile_75,
+        ];
+
+        // add job & salaries to array as object
+        salaryDataArray.push({
+            "Job Title": jobTitle,
+            Salaries: salaries,
         });
+    }
+    // all jobs & salary percentiles
+    return salaryDataArray;
 }
 
 // shortcuts to urban data, urban salaries fetch apis
