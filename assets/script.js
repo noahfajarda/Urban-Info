@@ -72,7 +72,6 @@ submitBtn.on("click", function (event) {
     var userInput = document.getElementById("myInput").value;
     searchUrbanAreas(userInput);
     addUrbanButton(userInput);
-    console.log(event);
     document.getElementById("myInput").value = "";
 });
 
@@ -86,7 +85,6 @@ function addUrbanButton(userInput) {
     } else {
         console.log("NOT ADDED:", urbanAreasHistory);
     }
-    console.log(urbanAreasHistory);
 }
 
 // add to local storage
