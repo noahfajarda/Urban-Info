@@ -247,7 +247,7 @@ function searchUrbanAreas(urbanArea) {
     urbanData(urbanArea)
         .then((response) => response.json())
         .then((data) => {
-            // console.log("Details:", data);
+            // all data we need
             var areaQualities = retrieveCategoryData(data);
             console.log("Area Qualities:", areaQualities);
             // structure of Area Qualities array:
