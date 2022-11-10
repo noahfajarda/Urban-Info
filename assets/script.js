@@ -290,17 +290,16 @@ function createEl(element, innerHTML, classNames, idName) {
 //     </div>`
 //     document.body.appendChild(aside1);
 
-// var selectMenu = document.querySelector(".dropdown-menu")
+var selectMenu = document.querySelector(".dropdown-menu");
 
-// // adding city list data to dropdown
-// // NOTEs: currently adds to ".dropdown-menu" div, but DOES NOT function correctly
-
-// for (i = 0; i < urbanAreas.length; i++) {
-//     createEl("a", `${urbanAreas[i]}`, "dropdown-item areaOptions", "")
-//     var selectOption = document.querySelector(`areaOptions`)
-//     // selectOption.href = ""
-//     selectMenu.appendChild(selectOption)
-// }
+// adding city list data to dropdown
+// NOTE: currently adds to ".dropdown-menu" div, but does not function correctly
+for (i = 0; i < urbanAreas.length; i++) {
+    createEl("a", `${urbanAreas[i]}`, "dropdown-item areaOptions", "");
+    var selectOption = document.querySelector(`areaOptions`);
+    // selectOption.href = ""
+    selectMenu.appendChild(selectOption);
+}
 
 var statDisplay = createEl("div", "", "", "");
 
@@ -312,67 +311,49 @@ function updateStatDisplay(cityName, data) {
     <h2> ${cityName}<h2>
     <div class="dropdown show">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Business Freedom
+            Dropdown link
         </a>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item">Business Freedom: ${data.categories[0].data[0]}</a>
-            <a class="dropdown-item">Corruption Freedom: ${data.categories[0].data[2]}</a>
-            <a class="dropdown-item">"Labor Restrictions": ${data.categories[0].data[4]}</a>
         </div>
     </div>
 
     <div class="dropdown show">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            City Size
+            Dropdown link
         </a>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item">UA Population Size: ${data.categories[1].data[0]}</a>
-            <a class="dropdown-item">UA Population Density: ${data.categories[1].data[1]}</a>
-            <a class="dropdown-item"> City Center Population Density: ${data.categories[1].data[2]}</a>
         </div>
     </div>
     
     <div class="dropdown show">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Cost of Living
+            Dropdown link
         </a>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item">Consumer Price Index: ${data.categories[3].data[0]}</a>
-            <a class="dropdown-item">Cost of Public Transport: ${data.categories[3].data[7]}</a>
-            <a class="dropdown-item">Cost of Restaurant Meal: ${data.categories[3].data[8]}</a>
         </div>
     </div>
 
     <div class="dropdown show">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Economy
+            Dropdown link
         </a>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item">GDP Growth Rate: ${data.categories[5].data[2]}</a>
-            <a class="dropdown-item">GDP Per Capita: ${data.categories[1].data[4]}</a>
         </div>
     </div>
     
     <div class="dropdown show">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Education
+            Dropdown link
         </a>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item">Student Happiness: ${data.categories[6].data[0]}</a>
-            <a class="dropdown-item">PISA Ranking: ${data.categories[6].data[11]}</a>
-            <a class="dropdown-item">PISA Ranking Telescore: ${data.categories[6].data[12]}</a>
-            <a class="dropdown-item">Best University: ${data.categories[6].data[16]}</a>
-            <a class="dropdown-item">Best University Rank: ${data.categories[6].data[17]}</a>
         </div>
     </div>
-
+    
     <div class="dropdown show">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Healthcare
+            Dropdown link
         </a>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item">Cost: ${data.categories[7].data[0]}</a>
-            <a class="dropdown-item">Quality: ${data.categories[7].data[3]}</a>
         </div>
     </div>
 
