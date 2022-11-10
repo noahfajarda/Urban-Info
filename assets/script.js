@@ -94,7 +94,11 @@ function addUrbanButton(userInput) {
         // if UA doesn't exist
         syncLocalStorage(userInput);
         // prettier-ignore
-        createEl("button", userInput, (id = userInput), (classes = "urbanArea"), "#searchSection");
+        createEl("button", userInput, (id = userInput.replaceAll(" ", "")), (classes = "urbanArea"), "#searchSection");
+        console.log("#" + userInput);
+        $("#" + userInput.replaceAll(" ", "")).on("click", function () {
+            searchUrbanAreas(userInput);
+        });
     } else {
         console.log("NOT ADDED:", urbanAreasHistory);
     }
