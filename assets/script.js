@@ -256,7 +256,7 @@ var urbanAreas = [
     "Zagreb",
     "Zurich",
 ];
-// 
+// element creation funciton
 function createEl(element, innerHTML, classNames, idName) {
     var element = document.createElement("element");
     element.innerHTML = innerHTML;
@@ -276,7 +276,9 @@ function createEl(element, innerHTML, classNames, idName) {
 
 // var aside1 = createEl("aside", "Test", "border-dark", "aside1")
 
-    var aside1 = document.createElement("aside1");
+
+// creating dropdown for city list
+var aside1 = document.createElement("aside");
     aside1.innerHTML = `
     <div class="dropdown show">
       <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -290,14 +292,75 @@ function createEl(element, innerHTML, classNames, idName) {
 
 var selectMenu = document.querySelector(".dropdown-menu")
 
+// adding city list data to dropdown
+// NOTE: currently adds to ".dropdown-menu" div, but does not function correctly
 for (i = 0; i < urbanAreas.length; i++) {
-    createEl("a", `${urbanAreas[i]}`, "dropdown-item", `option${[i]}`)
-    var selectOption = document.querySelector(`#option${[i]}`)
+    createEl("a", `${urbanAreas[i]}`, "dropdown-item areaOptions", "")
+    var selectOption = document.querySelector(`areaOptions`)
     // selectOption.href = ""
     selectMenu.appendChild(selectOption)
 }
 
-createEl("div", "first div text", "border-dark row rounded", "div1")
+var statDisplay = createEl("div", "", "", "");
+function updateStatusDisplay(cityName, data) {
+    statDisplay.innerHTML = `
+    <h2> ${cityName}<h2>
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown link
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        </div>
+    </div>
+
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown link
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        </div>
+    </div>
+    
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown link
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        </div>
+    </div>
+
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown link
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        </div>
+    </div>
+    
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown link
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        </div>
+    </div>
+    
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown link
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        </div>
+    </div>
+    `
+}
+    
+    for (i = 0; i < areaQualities.length; i++) {
+        createEl("div", `${areaQualities[i]}`, "dropdown-item statOption", `statOption${[i]}`)
+    var selectOption = document.querySelector(`#statOption${[i]}`)
+    // selectOption.href = ""
+    selectMenu.appendChild(selectOption)
+}
 
 
 // function to create search bars
