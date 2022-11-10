@@ -58,7 +58,7 @@ var userInput = $("#myInput");
 userInput.on("keyup", function (event) {
     // different actions depending on searchBarID
     // when user presses enter:
-    if (event.key === "Enter") {
+    if (event.key === "Enter" && event.target.value !== "") {
         // search for urban area upon enter
         searchUrbanAreas(event.target.value);
         addUrbanButton(event.target.value);
