@@ -1,60 +1,3 @@
-// 
-function createEl(element, innerHTML, classNames, idName) {
-    var element = document.createElement("element");
-    element.innerHTML = `${innerHTML}`;
-    document.body.appendChild(element);
-    element.setAttribute("class", `${classNames}`)
-    element.setAttribute("id", `${idName}`)
-}
-
-var nav1 = createEl("nav", "Is My City Cool?", "border-dark row")
-createEl("a", "About the team", "border-dark")
-createEl("a", "About the project", "border-dark")
-document.appendChild(document.querySelector("#about1"))
-nav1.appendChild(document.querySelector("#about2"))
-
-    // TODO: create column arrangement
-    // https://getbootstrap.com/docs/4.0/components/dropdowns/
-var aside1 = createEl("aside", "", "border-dark", "aside1")
-aside1.innerHTML = `
-<div class="dropdown show">
-  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown link
-  </a>
-
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-  </div>
-</div>`
-
-createEl("aside", "aside text", "border-dark rounded")
-createEl("div", "first div text", "border-dark row rounded", "div1")
-
-
-// function to create search bars
-// reason: city & urban area event listeners
-function createSearchBar(type) {
-    // add input element to page
-    var userInput = document.createElement("input");
-    userInput.setAttribute("id", type);
-    userInput.setAttribute("placeholder", type);
-    document.body.appendChild(userInput);
-
-    userInput.addEventListener("keyup", function (event) {
-        // different actions depending on searchBarID
-        // when user presses enter:
-        if (event.key === "Enter") {
-            if (this.id === "Urban Area") {
-                // search for urban area upon enter
-                searchUrbanAreas(event.target.value);
-            } else if (this.id === "City") {
-                console.log("function for urban area");
-            }
-        }
-    });
-}
 var urbanAreas = [
     "Aarhus",
     "Adelaide",
@@ -313,6 +256,72 @@ var urbanAreas = [
     "Zagreb",
     "Zurich",
 ];
+// 
+function createEl(element, innerHTML, classNames, idName) {
+    var element = document.createElement("element");
+    element.innerHTML = innerHTML;
+    document.body.appendChild(element);
+    element.setAttribute("class", `${classNames}`)
+    element.setAttribute("id", `${idName}`)
+}
+
+// var nav1 = createEl("nav", "Is My City Cool?", "border-dark row")
+// createEl("a", "About the team", "border-dark")
+// createEl("a", "About the project", "border-dark")
+// document.body.appendChild(document.querySelector("#about1"))
+// nav1.appendChild(document.querySelector("#about2"))
+
+    // TODO: create column arrangement
+    // https://getbootstrap.com/docs/4.0/components/dropdowns/
+
+// var aside1 = createEl("aside", "Test", "border-dark", "aside1")
+
+    var aside1 = document.createElement("aside1");
+    aside1.innerHTML = `
+    <div class="dropdown show">
+      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Dropdown link
+      </a>
+    
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      </div>
+    </div>`
+    document.body.appendChild(aside1);
+
+var selectMenu = document.querySelector(".dropdown-menu")
+
+for (i = 0; i < urbanAreas.length; i++) {
+    createEl("a", `${urbanAreas[i]}`, "dropdown-item", `option${[i]}`)
+    var selectOption = document.querySelector(`#option${[i]}`)
+    // selectOption.href = ""
+    selectMenu.appendChild(selectOption)
+}
+
+createEl("div", "first div text", "border-dark row rounded", "div1")
+
+
+// function to create search bars
+// reason: city & urban area event listeners
+function createSearchBar(type) {
+    // add input element to page
+    var userInput = document.createElement("input");
+    userInput.setAttribute("id", type);
+    userInput.setAttribute("placeholder", type);
+    document.body.appendChild(userInput);
+
+    userInput.addEventListener("keyup", function (event) {
+        // different actions depending on searchBarID
+        // when user presses enter:
+        if (event.key === "Enter") {
+            if (this.id === "Urban Area") {
+                // search for urban area upon enter
+                searchUrbanAreas(event.target.value);
+            } else if (this.id === "City") {
+                console.log("function for urban area");
+            }
+        }
+    });
+}
 
 function autocomplete(inp, arr) {
     /*the autocomplete function takes two arguments,
