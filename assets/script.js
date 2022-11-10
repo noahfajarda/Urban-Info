@@ -261,8 +261,8 @@ function createEl(element, innerHTML, classNames, idName) {
     var element = document.createElement("element");
     element.innerHTML = innerHTML;
     document.body.appendChild(element);
-    element.setAttribute("class", `${classNames}`)
-    element.setAttribute("id", `${idName}`)
+    element.setAttribute("class", `${classNames}`);
+    element.setAttribute("id", `${idName}`);
 }
 
 // var nav1 = createEl("nav", "Is My City Cool?", "border-dark row")
@@ -271,11 +271,10 @@ function createEl(element, innerHTML, classNames, idName) {
 // document.body.appendChild(document.querySelector("#about1"))
 // nav1.appendChild(document.querySelector("#about2"))
 
-    // TODO: create column arrangement
-    // https://getbootstrap.com/docs/4.0/components/dropdowns/
+// TODO: create column arrangement
+// https://getbootstrap.com/docs/4.0/components/dropdowns/
 
 // var aside1 = createEl("aside", "Test", "border-dark", "aside1")
-
 
 // NOTES:creating dropdown for city list
 
@@ -285,7 +284,7 @@ function createEl(element, innerHTML, classNames, idName) {
 //       <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 //         Dropdown link
 //       </a>
-    
+
 //       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 //       </div>
 //     </div>`
@@ -307,7 +306,7 @@ var statDisplay = createEl("div", "", "", "");
 
 // NOTES: function for stat display, one string for all html
 // called on line 608, but i get "VM10:6789 crbug/1173575, non-JS module files deprecated." in console. let me know if you have the same issue -Brandon
-// https://stackoverflow.com/questions/67191286/crbug-1173575-non-js-module-files-deprecated-chromewebdata-index%EA%9E%89530595551 
+// https://stackoverflow.com/questions/67191286/crbug-1173575-non-js-module-files-deprecated-chromewebdata-index%EA%9E%89530595551
 function updateStatDisplay(cityName, data) {
     statDisplay.innerHTML = `
     <h2> ${cityName}<h2>
@@ -429,9 +428,8 @@ function updateStatDisplay(cityName, data) {
         <a class="dropdown-item">Traffic handling: ${data.categories[19].data[1]}</a>
     </div>
     </div>
-    `
+    `;
 }
-
 
 // NOTE: old "for" loop, ignore or delete -Brandon
 // for (i = 0; i < areaQualities.length; i++) {
@@ -440,7 +438,6 @@ function updateStatDisplay(cityName, data) {
 //     // selectOption.href = ""
 //     selectMenu.appendChild(selectOption)
 // }
-
 
 // function to create search bars
 // reason: city & urban area event listeners
@@ -605,7 +602,7 @@ function searchUrbanAreas(urbanArea) {
             // [{"Category": {"SubCategory": "", "SubCategory": "", ...}},
             // {"Category": {"SubCategory": "", "SubCategory": "", ...}},
             // ...]
-            updateStatDisplay(urbanArea, data)
+            updateStatDisplay(urbanArea, data);
         });
 
     // retrieved salary data of urban area
