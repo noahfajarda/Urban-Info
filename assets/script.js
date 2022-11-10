@@ -1,6 +1,6 @@
 // utility function to dynamically create and append elements
 // function can also accept ids & classes
-function createEl(element, innerHTML, id = "", classes = "") {
+function createEl(element, innerHTML, id = "", classes = "", parent = "") {
     var element = document.createElement(element);
     element.innerHTML = innerHTML;
     // add classes
@@ -19,11 +19,18 @@ function createEl(element, innerHTML, id = "", classes = "") {
     } else {
         var nothing2 = 0;
     }
-    document.body.appendChild(element);
+    // parent
+    // console.log(parent);
+    if (parent !== "") {
+        $(parent).append(element);
+    } else {
+        document.body.appendChild(element);
+    }
 }
 
-createEl("nav", "<h2>Is My City Cool?</h2>", ["class1", "class2"]);
-createEl("aside", "<aside>Is My City Cool?</aside>");
+// create el params: el, innerHTML, id, class, parent
+createEl("nav", "<h2>Is My City Cool?</h2>", "", ["class1", "class2"], "main");
+createEl("aside", "<aside>Is My City Cool?</aside>", "", "", "main");
 
 // function to create search bars
 // reason: city & urban area event listeners
@@ -51,7 +58,7 @@ function createSearchBar(type) {
 // add 'Urban Area' & 'city' input elements to page
 createSearchBar("Urban Area");
 createSearchBar("City");
-createEl("br", "<br>");
+createEl("br", "<br>", "", "", "main");
 
 // upon pressing enter in Logan's input box, it retrieves the data
 var userInput = $("#myInput");
@@ -81,7 +88,7 @@ function addUrbanButton(userInput) {
         // if UA doesn't exist
         syncLocalStorage(userInput);
         // prettier-ignore
-        createEl("button", userInput, (id = userInput), (classes = "urbanArea"));
+        createEl("button", userInput, (id = userInput), (classes = "urbanArea"), "main");
     } else {
         console.log("NOT ADDED:", urbanAreasHistory);
     }
