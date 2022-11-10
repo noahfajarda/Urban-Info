@@ -1,3 +1,30 @@
+// utility function to dynamically create and append elements
+// function can also accept ids & classes
+function createEl(element, innerHTML, id = "", classes = "") {
+    var element = document.createElement(element);
+    element.innerHTML = innerHTML;
+    // add classes
+    if (typeof classes == "object") {
+        for (var i = 0; i < classes.length; i++) {
+            element.classList.add(classes[i]);
+        }
+    } else if (classes === "") {
+        var nothing = 0;
+    } else {
+        element.classList.add(classes);
+    }
+    // add id
+    if (id !== "") {
+        element.setAttribute("id", id);
+    } else {
+        var nothing2 = 0;
+    }
+    document.body.appendChild(element);
+}
+
+createEl("nav", "<h2>Is My City Cool?</h2>", ["class1", "class2"]);
+createEl("aside", "<aside>Is My City Cool?</aside>");
+
 // function to create search bars
 // reason: city & urban area event listeners
 function createSearchBar(type) {
@@ -20,275 +47,81 @@ function createSearchBar(type) {
         }
     });
 }
-var urbanAreas = [
-    "Aarhus",
-    "Adelaide",
-    "Albuquerque",
-    "Almaty",
-    "Amsterdam",
-    "Anchorage",
-    "Ankara",
-    "Asheville",
-    "Asuncion",
-    "Athens",
-    "Atlanta",
-    "Auckland",
-    "Austin",
-    "Baku",
-    "Bali",
-    "Bangkok",
-    "Barcelona",
-    "Beijing",
-    "Beirut",
-    "Belfast",
-    "Belgrade",
-    "Belize City",
-    "Bengaluru",
-    "Berlin",
-    "Bern",
-    "Birmingham",
-    "Birmingham, AL",
-    "Bogota",
-    "Boise",
-    "Bologna",
-    "Bordeaux",
-    "Boston",
-    "Boulder",
-    "Bozeman",
-    "Bratislava",
-    "Brisbane",
-    "Bristol",
-    "Brussels",
-    "Bucharest",
-    "Budapest",
-    "Buenos Aires",
-    "Buffalo",
-    "Cairo",
-    "Calgary",
-    "Cambridge",
-    "Cape Town",
-    "Caracas",
-    "Cardiff",
-    "Casablanca",
-    "Charleston",
-    "Charlotte",
-    "Chattanooga",
-    "Chennai",
-    "Chiang Mai",
-    "Chicago",
-    "Chisinau",
-    "Christchurch",
-    "Cincinnati",
-    "Cleveland",
-    "Cluj-Napoca",
-    "Cologne",
-    "Colorado Springs",
-    "Columbus",
-    "Copenhagen",
-    "Cork",
-    "Curitiba",
-    "Dallas",
-    "Dar es Salaam",
-    "Delhi",
-    "Denver",
-    "Des Moines",
-    "Detroit",
-    "Doha",
-    "Dresden",
-    "Dubai",
-    "Dublin",
-    "Dusseldorf",
-    "Edinburgh",
-    "Edmonton",
-    "Eindhoven",
-    "Eugene",
-    "Florence",
-    "Florianopolis",
-    "Fort Collins",
-    "Frankfurt",
-    "Fukuoka",
-    "Galway",
-    "Gdansk",
-    "Geneva",
-    "Glasgow",
-    "Gothenburg",
-    "Grenoble",
-    "Guadalajara",
-    "Guatemala City",
-    "Halifax",
-    "Hamburg",
-    "Hannover",
-    "Havana",
-    "Helsinki",
-    "Ho Chi Minh City",
-    "Hong Kong",
-    "Honolulu",
-    "Houston",
-    "Hyderabad",
-    "Indianapolis",
-    "Innsbruck",
-    "Istanbul",
-    "Jacksonville",
-    "Jakarta",
-    "Johannesburg",
-    "Kansas City",
-    "Karlsruhe",
-    "Kathmandu",
-    "Kiev",
-    "Kingston",
-    "Knoxville",
-    "Krakow",
-    "Kuala Lumpur",
-    "Lagos",
-    "La Paz",
-    "Las Palmas de Gran Canaria",
-    "Las Vegas",
-    "Lausanne",
-    "Leipzig",
-    "Lille",
-    "Lima",
-    "Lisbon",
-    "Liverpool",
-    "Ljubljana",
-    "London",
-    "Los Angeles",
-    "Louisville",
-    "Luxembourg",
-    "Lviv",
-    "Lyon",
-    "Madison",
-    "Madrid",
-    "Malaga",
-    "Malmo",
-    "Managua",
-    "Manchester",
-    "Manila",
-    "Marseille",
-    "Medellin",
-    "Melbourne",
-    "Memphis",
-    "Mexico City",
-    "Miami",
-    "Milan",
-    "Milwaukee",
-    "Minneapolis-Saint Paul",
-    "Minsk",
-    "Montevideo",
-    "Montreal",
-    "Moscow",
-    "Mumbai",
-    "Munich",
-    "Nairobi",
-    "Nantes",
-    "Naples",
-    "Nashville",
-    "New Orleans",
-    "New York",
-    "Nice",
-    "Nicosia",
-    "Oklahoma City",
-    "Omaha",
-    "Orlando",
-    "Osaka",
-    "Oslo",
-    "Ottawa",
-    "Oulu",
-    "Oxford",
-    "Palo Alto",
-    "Panama",
-    "Paris",
-    "Perth",
-    "Philadelphia",
-    "Phnom Penh",
-    "Phoenix",
-    "Phuket",
-    "Pittsburgh",
-    "Portland, ME",
-    "Portland, OR",
-    "Porto",
-    "Porto Alegre",
-    "Prague",
-    "Providence",
-    "Quito",
-    "Raleigh",
-    "Reykjavik",
-    "Richmond",
-    "Riga",
-    "Rio De Janeiro",
-    "Riyadh",
-    "Rochester",
-    "Rome",
-    "Rotterdam",
-    "Saint Petersburg",
-    "Salt Lake City",
-    "San Antonio",
-    "San Diego",
-    "San Francisco Bay Area",
-    "San Jose",
-    "San Juan",
-    "San Luis Obispo",
-    "San Salvador",
-    "Santiago",
-    "Santo Domingo",
-    "Sao Paulo",
-    "Sarajevo",
-    "Saskatoon",
-    "Seattle",
-    "Seoul",
-    "Seville",
-    "Shanghai",
-    "Singapore",
-    "Skopje",
-    "Sofia",
-    "St. Louis",
-    "Stockholm",
-    "Stuttgart",
-    "Sydney",
-    "Taipei",
-    "Tallinn",
-    "Tampa Bay Area",
-    "Tampere",
-    "Tartu",
-    "Tashkent",
-    "Tbilisi",
-    "Tehran",
-    "Tel Aviv",
-    "The Hague",
-    "Thessaloniki",
-    "Tokyo",
-    "Toronto",
-    "Toulouse",
-    "Tunis",
-    "Turin",
-    "Turku",
-    "Uppsala",
-    "Utrecht",
-    "Valencia",
-    "Valletta",
-    "Vancouver",
-    "Victoria",
-    "Vienna",
-    "Vilnius",
-    "Warsaw",
-    "Washington, D.C.",
-    "Wellington",
-    "Winnipeg",
-    "Wroclaw",
-    "Yerevan",
-    "Zagreb",
-    "Zurich",
-];
 
+// add 'Urban Area' & 'city' input elements to page
+createSearchBar("Urban Area");
+createSearchBar("City");
+createEl("br", "<br>");
+
+// upon pressing enter in Logan's input box, it retrieves the data
+var userInput = $("#myInput");
+userInput.on("keyup", function (event) {
+    // different actions depending on searchBarID
+    // when user presses enter:
+    if (event.key === "Enter") {
+        // search for urban area upon enter
+        searchUrbanAreas(event.target.value);
+        addUrbanButton(event.target.value);
+        event.target.value = "";
+    }
+});
+
+// retrieve data upon clicking submit button too
+var submitBtn = $("#submitBtn");
+submitBtn.on("click", function (event) {
+    var userInput = document.getElementById("myInput").value;
+    searchUrbanAreas(userInput);
+    addUrbanButton(userInput);
+    document.getElementById("myInput").value = "";
+});
+
+var urbanAreasHistory = [];
+function addUrbanButton(userInput) {
+    if (!urbanAreasHistory.includes(userInput)) {
+        // if UA doesn't exist
+        syncLocalStorage(userInput);
+        // prettier-ignore
+        createEl("button", userInput, (id = userInput), (classes = "urbanArea"));
+    } else {
+        console.log("NOT ADDED:", urbanAreasHistory);
+    }
+}
+
+// add to local storage
+function syncLocalStorage(value) {
+    // add the urban area to history array
+    urbanAreasHistory.push(value);
+    localStorage.setItem(
+        "Urban Area History",
+        JSON.stringify(urbanAreasHistory)
+    );
+}
+
+// add buttons already in local storage
+function createUrbanButtonsLocal(history) {
+    history = JSON.parse(history);
+    if (history !== null) {
+        for (var i = 0; i < history.length; i++) {
+            addUrbanButton(history[i]);
+        }
+    }
+}
+createUrbanButtonsLocal(localStorage.getItem("Urban Area History"));
+
+// TODO: clear button
+
+// prettier-ignore
+var urbanAreas = ["Aarhus", "Adelaide", "Albuquerque", "Almaty", "Amsterdam", "Anchorage", "Ankara", "Asheville", "Asuncion", "Athens", "Atlanta", "Auckland", "Austin", "Baku", "Bali", "Bangkok", "Barcelona", "Beijing", "Beirut", "Belfast", "Belgrade", "Belize City", "Bengaluru", "Berlin", "Bern", "Birmingham", "Birmingham, AL", "Bogota", "Boise", "Bologna", "Bordeaux", "Boston", "Boulder", "Bozeman", "Bratislava", "Brisbane", "Bristol", "Brussels", "Bucharest", "Budapest", "Buenos Aires", "Buffalo", "Cairo", "Calgary", "Cambridge", "Cape Town", "Caracas", "Cardiff", "Casablanca", "Charleston", "Charlotte", "Chattanooga","Chennai", "Chiang Mai", "Chicago", "Chisinau", "Christchurch", "Cincinnati", "Cleveland", "Cluj-Napoca", "Cologne", "Colorado Springs", "Columbus", "Copenhagen", "Cork", "Curitiba", "Dallas", "Dar es Salaam", "Delhi", "Denver", "Des Moines", "Detroit", "Doha", "Dresden", "Dubai", "Dublin", "Dusseldorf", "Edinburgh", "Edmonton", "Eindhoven", "Eugene", "Florence", "Florianopolis", "Fort Collins", "Frankfurt", "Fukuoka", "Galway", "Gdansk", "Geneva", "Glasgow", "Gothenburg", "Grenoble", "Guadalajara", "Guatemala City", "Halifax", "Hamburg", "Hannover", "Havana", "Helsinki", "Ho Chi Minh City", "Hong Kong", "Honolulu", "Houston", "Hyderabad", "Indianapolis", "Innsbruck", "Istanbul", "Jacksonville", "Jakarta", "Johannesburg", "Kansas City", "Karlsruhe", "Kathmandu", "Kiev", "Kingston", "Knoxville", "Krakow", "Kuala Lumpur", "Lagos", "La Paz", "Las Palmas de Gran Canaria", "Las Vegas", "Lausanne", "Leipzig", "Lille", "Lima", "Lisbon", "Liverpool", "Ljubljana", "London", "Los Angeles", "Louisville", "Luxembourg", "Lviv", "Lyon", "Madison", "Madrid", "Malaga", "Malmo", "Managua", "Manchester", "Manila", "Marseille", "Medellin", "Melbourne", "Memphis", "Mexico City", "Miami", "Milan", "Milwaukee", "Minneapolis-Saint Paul", "Minsk", "Montevideo", "Montreal", "Moscow", "Mumbai", "Munich", "Nairobi", "Nantes", "Naples", "Nashville", "New Orleans", "New York", "Nice", "Nicosia", "Oklahoma City", "Omaha", "Orlando", "Osaka", "Oslo", "Ottawa", "Oulu", "Oxford", "Palo Alto", "Panama", "Paris", "Perth", "Philadelphia", "Phnom Penh", "Phoenix", "Phuket", "Pittsburgh", "Portland, ME", "Portland, OR", "Porto", "Porto Alegre", "Prague", "Providence", "Quito", "Raleigh", "Reykjavik", "Richmond", "Riga", "Rio De Janeiro", "Riyadh", "Rochester", "Rome", "Rotterdam", "Saint Petersburg", "Salt Lake City", "San Antonio", "San Diego", "San Francisco Bay Area", "San Jose", "San Juan", "San Luis Obispo", "San Salvador", "Santiago", "Santo Domingo", "Sao Paulo", "Sarajevo", "Saskatoon", "Seattle", "Seoul", "Seville", "Shanghai", "Singapore", "Skopje", "Sofia", "St. Louis", "Stockholm", "Stuttgart", "Sydney", "Taipei", "Tallinn", "Tampa Bay Area", "Tampere", "Tartu", "Tashkent", "Tbilisi", "Tehran", "Tel Aviv", "The Hague", "Thessaloniki", "Tokyo", "Toronto", "Toulouse", "Tunis", "Turin", "Turku", "Uppsala", "Utrecht", "Valencia", "Valletta", "Vancouver", "Victoria", "Vienna", "Vilnius", "Warsaw", "Washington, D.C.", "Wellington", "Winnipeg", "Wroclaw", "Yerevan", "Zagreb", "Zurich"];
+
+//autocomplete code from: https://www.w3schools.com/howto/howto_js_autocomplete.asp
 function autocomplete(inp, arr) {
     /*the autocomplete function takes two arguments,
     the text field element and an array of possible autocompleted values:*/
     var currentFocus;
     /*execute a function when someone writes in the text field:*/
     inp.addEventListener("input", function (e) {
-        var a,
-            b,
-            i,
-            val = this.value;
+        // prettier-ignore
+        var a,b,i,val = this.value;
         /*close any already open lists of autocompleted values*/
         closeAllLists();
         if (!val) {
@@ -322,6 +155,8 @@ function autocomplete(inp, arr) {
                     /*close the list of autocompleted values,
                     (or any other open lists of autocompleted values:*/
                     closeAllLists();
+                    // refocuses element after clicking one of the autocomplete buttons
+                    $("#myInput").focus();
                 });
                 a.appendChild(b);
             }
@@ -387,32 +222,32 @@ function autocomplete(inp, arr) {
         closeAllLists(e.target);
     });
 }
-
 /*initiate the autocomplete function on the "myInput" element, and pass along the urbanAreas array as possible autocomplete values:*/
 autocomplete(document.getElementById("myInput"), urbanAreas);
 
-//autocomplete code from: https://www.w3schools.com/howto/howto_js_autocomplete.asp
+// NOAH START
 
-function callCity(search) {
-    return fetch(`https://api.teleport.org/api/cities/?search=${search}`);
-}
+// creates list of all possible urban areas in API
+urbanAreasList()
+    .then((response) => response.json())
+    .then((data) => {
+        var urbanAreaData = data._links["ua:item"];
+        var urbanAreaNameList = [];
+        for (var i = 0; i < urbanAreaData.length; i++) {
+            urbanAreaNameList.push(urbanAreaData[i].name);
+        }
+        // All urban Areas
+        console.log("Array of Urban Areas: ", urbanAreaNameList);
+    });
 
-// add 'Urban Area' & 'city' input elements to page
-createSearchBar("Urban Area");
-createSearchBar("City");
-
-function callCity(search) {
-    return fetch(`https://api.teleport.org/api/cities/?search=${search}`);
-}
-
+// search urban areas
 function searchUrbanAreas(urbanArea) {
     urbanArea = urbanArea.replaceAll(" ", "-");
     console.log(urbanArea);
     urbanData(urbanArea)
         .then((response) => response.json())
         .then((data) => {
-            console.log("Details:", data);
-
+            // console.log("Details:", data);
             var areaQualities = retrieveCategoryData(data);
             console.log("Area Qualities:", areaQualities);
             // structure of Area Qualities array:
@@ -434,27 +269,12 @@ function searchUrbanAreas(urbanArea) {
         });
 }
 
-// creates list of all possible urban areas in API
-urbanAreasList()
-    .then((response) => response.json())
-    .then((data) => {
-        var urbanAreaData = data._links["ua:item"];
-        var urbanAreaNameList = [];
-        for (var i = 0; i < data._links["ua:item"].length; i++) {
-            urbanAreaNameList.push(urbanAreaData[i].name);
-        }
-        // All urban Areas
-        console.log("Array of Urban Areas: ", urbanAreaNameList);
-    });
-
-// retrieves all salaries from all occupations of city
+// retrieves all salaries from all occupations of urban area
 function retrieveSalaries(data) {
     var salaryDataArray = [];
-
     for (var i = 0; i < data.salaries.length; i++) {
         // Job title
         var jobTitle = data.salaries[i].job.title;
-
         // Salaries for that job title
         var salaries = [
             data.salaries[i].salary_percentiles.percentile_25,
@@ -472,9 +292,8 @@ function retrieveSalaries(data) {
     return salaryDataArray;
 }
 
+// retrieves all category data from urban area
 function retrieveCategoryData(data) {
-    // DELETE PLACEHOLDER LATER
-    var placeholder = 0;
     var categories = data.categories;
     // follows 'data to use' list on group doc
     var areaQualities = {
@@ -537,19 +356,23 @@ function retrieveCategoryData(data) {
     return areaQualities;
 }
 
-// shortcuts to urban data, urban salaries fetch apis
+// shortcuts to urban data, urban salaries, list of all urban areas, city fetch apis
 function urbanData(area) {
     return fetch(
-        `https://api.teleport.org/api/urban_areas/slug:san-francisco-bay-area/details`
+        `https://api.teleport.org/api/urban_areas/slug:${area.toLowerCase()}/details`
     );
 }
 
 function urbanSalaries(area) {
     return fetch(
-        `https://api.teleport.org/api/urban_areas/slug:san-francisco-bay-area/salaries`
+        `https://api.teleport.org/api/urban_areas/slug:${area.toLowerCase()}/salaries`
     );
 }
 
 function urbanAreasList() {
     return fetch("https://api.teleport.org/api/urban_areas/");
+}
+
+function callCity(search) {
+    return fetch(`https://api.teleport.org/api/cities/?search=${search}`);
 }
