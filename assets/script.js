@@ -29,8 +29,14 @@ function createEl(element, innerHTML, id = "", classes = "", parent = "") {
 }
 
 // create el params: el, innerHTML, id, class, parent
-createEl("nav", "<h2>Is My City Cool?</h2>", "", ["class1", "class2"], "main");
-createEl("aside", "<aside>Is My City Cool?</aside>", "", "", "main");
+createEl(
+    "nav",
+    "<h2>Created on line 32 JS?</h2>",
+    "",
+    ["class1", "class2"],
+    "body"
+);
+createEl("aside", "<aside>Created on line 32 JS?</aside>", "", "", "body");
 
 // function to create search bars
 // reason: city & urban area event listeners
@@ -88,7 +94,7 @@ function addUrbanButton(userInput) {
         // if UA doesn't exist
         syncLocalStorage(userInput);
         // prettier-ignore
-        createEl("button", userInput, (id = userInput), (classes = "urbanArea"), "main");
+        createEl("button", userInput, (id = userInput), (classes = "urbanArea"), "#searchSection");
     } else {
         console.log("NOT ADDED:", urbanAreasHistory);
     }
@@ -247,7 +253,7 @@ urbanAreasList()
         console.log("Array of Urban Areas: ", urbanAreaNameList);
     });
 
-// search urban areas
+// search urban areas for their data (area qualities & Salary data)
 function searchUrbanAreas(urbanArea) {
     urbanArea = urbanArea.replaceAll(" ", "-");
     console.log(urbanArea);
@@ -261,6 +267,26 @@ function searchUrbanAreas(urbanArea) {
             // [{"Category": {"SubCategory": "", "SubCategory": "", ...}},
             // {"Category": {"SubCategory": "", "SubCategory": "", ...}},
             // ...]
+
+            // business
+            var businessFreedomVal =
+                areaQualities["Business Freedom"]["Business Freedom"]
+                    .float_value;
+            $("#businessFreedom").text(`
+            Business Freedom: ${businessFreedomVal}`);
+
+            var corruptionFreedomVal =
+                areaQualities["Business Freedom"]["Corruption Freedom"]
+                    .float_value;
+            $("#corruptionFreedom").text(`
+            Corruption Freedom: ${corruptionFreedomVal}`);
+
+            var laborRestrictionsVal =
+                areaQualities["Business Freedom"]["Labor Restrictions"]
+                    .float_value;
+            console.log(laborRestrictionsVal);
+            $("#laborRestricitons").text(`
+            Labor Restrictions: ${laborRestrictionsVal}`);
         });
 
     // retrieved salary data of urban area
