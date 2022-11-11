@@ -73,6 +73,17 @@ button.urbanArea {
     color: white;
     font-size: 20px;
     font-weight: 600;
+    transition: all 0.5s;
+    flex-basis: 100%;
+}
+
+button.urbanArea:hover {
+    background-color: rgb(197, 236, 42);
+    font-size: 22px;
+    transform: translateY(-5px);
+    box-shadow: rgba(91, 93, 50, 0.25) 0px 50px 100px -20px,
+        rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+        rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
 /* classes */
