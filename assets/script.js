@@ -27,6 +27,186 @@ function createEl(element, innerHTML, id = "", classes = "", parent = "") {
         document.body.appendChild(element);
     }
 }
+    document.body.appendChild(element);
+    element.setAttribute("class", `${classNames}`)
+    element.setAttribute("id", `${idName}`)
+}
+
+// var nav1 = createEl("nav", "Is My City Cool?", "border-dark row")
+// createEl("a", "About the team", "border-dark")
+// createEl("a", "About the project", "border-dark")
+// document.body.appendChild(document.querySelector("#about1"))
+// nav1.appendChild(document.querySelector("#about2"))
+
+    // TODO: create column arrangement
+    // https://getbootstrap.com/docs/4.0/components/dropdowns/
+
+// var aside1 = createEl("aside", "Test", "border-dark", "aside1")
+
+
+// NOTES:creating dropdown for city list
+
+// var aside1 = document.createElement("aside");
+//     aside1.innerHTML = `
+//     <div class="dropdown show">
+//       <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+//         Dropdown link
+//       </a>
+    
+//       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+//       </div>
+//     </div>`
+//     document.body.appendChild(aside1);
+
+// var selectMenu = document.querySelector(".dropdown-menu")
+
+// // adding city list data to dropdown
+// // NOTEs: currently adds to ".dropdown-menu" div, but DOES NOT function correctly
+
+// for (i = 0; i < urbanAreas.length; i++) {
+//     createEl("a", `${urbanAreas[i]}`, "dropdown-item areaOptions", "")
+//     var selectOption = document.querySelector(`areaOptions`)
+//     // selectOption.href = ""
+//     selectMenu.appendChild(selectOption)
+// }
+
+var statDisplay = createEl("div", "", "", "");
+
+// NOTES: function for stat display, one string for all html
+// called on line 608, but i get "VM10:6789 crbug/1173575, non-JS module files deprecated." in console. let me know if you have the same issue -Brandon
+// https://stackoverflow.com/questions/67191286/crbug-1173575-non-js-module-files-deprecated-chromewebdata-index%EA%9E%89530595551 
+function updateStatDisplay(cityName, data) {
+    statDisplay.innerHTML = `
+    <h2> ${cityName}<h2>
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Business Freedom
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item">Business Freedom: ${data.categories[0].data[0]}</a>
+            <a class="dropdown-item">Corruption Freedom: ${data.categories[0].data[2]}</a>
+            <a class="dropdown-item">"Labor Restrictions": ${data.categories[0].data[4]}</a>
+        </div>
+    </div>
+
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            City Size
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item">UA Population Size: ${data.categories[1].data[0]}</a>
+            <a class="dropdown-item">UA Population Density: ${data.categories[1].data[1]}</a>
+            <a class="dropdown-item"> City Center Population Density: ${data.categories[1].data[2]}</a>
+        </div>
+    </div>
+    
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Cost of Living
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item">Consumer Price Index: ${data.categories[3].data[0]}</a>
+            <a class="dropdown-item">Cost of Public Transport: ${data.categories[3].data[7]}</a>
+            <a class="dropdown-item">Cost of Restaurant Meal: ${data.categories[3].data[8]}</a>
+        </div>
+    </div>
+
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Economy
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item">GDP Growth Rate: ${data.categories[5].data[2]}</a>
+            <a class="dropdown-item">GDP Per Capita: ${data.categories[1].data[4]}</a>
+        </div>
+    </div>
+    
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Education
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item">Student Happiness: ${data.categories[6].data[0]}</a>
+            <a class="dropdown-item">PISA Ranking: ${data.categories[6].data[11]}</a>
+            <a class="dropdown-item">PISA Ranking Telescore: ${data.categories[6].data[12]}</a>
+            <a class="dropdown-item">Best University: ${data.categories[6].data[16]}</a>
+            <a class="dropdown-item">Best University Rank: ${data.categories[6].data[17]}</a>
+        </div>
+    </div>
+
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Healthcare
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item">Cost: ${data.categories[7].data[0]}</a>
+            <a class="dropdown-item">Quality: ${data.categories[7].data[3]}</a>
+        </div>
+    </div>
+
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Housing
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item">Rent for a Large Apartment: ${data.categories[8].data[0]}</a>
+            <a class="dropdown-item">Rent for a Medium Apartment: ${data.categories[8].data[1]}</a>
+            <a class="dropdown-item">Rent for a Small Apartment: ${data.categories[8].data[2]}</a>
+            <a class="dropdown-item">Rent Index Telescore: ${data.categories[8].data[3]}</a>
+        </div>
+    </div>
+
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Pollution
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item">Air Pollution: ${data.categories[15].data[0]}</a>
+            <a class="dropdown-item">Cleanliness: ${data.categories[15].data[1]}</a>
+            <a class="dropdown-item">Water Quality: ${data.categories[15].data[3]}</a>
+        </div>
+    </div>
+
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Safety
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item">Crime Rate: ${data.categories[16].data[0]}</a>
+            <a class="dropdown-item">Gun Death Score: ${data.categories[16].data[2]}</a>
+            <a class="dropdown-item">Gun Ownership Score: ${data.categories[16].data[4]}</a>
+        </div>
+    </div>
+
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Taxation
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item">Income Tax: ${data.categories[18].data[2]}</a>
+            <a class="dropdown-item">Sales Tax: ${data.categories[18].data[3]}</a>
+        </div>
+    </div>
+
+    <div class="dropdown show">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Traffic
+    </a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item">Traffic handling: ${data.categories[19].data[1]}</a>
+    </div>
+    </div>
+    `
+}
+
+
+// NOTE: old "for" loop, ignore or delete -Brandon
+// for (i = 0; i < areaQualities.length; i++) {
+//         createEl("div", `${areaQualities[i]}`, "dropdown-item statOption", `statOption${[i]}`)
+//     var selectOption = document.querySelector(`#statOption${[i]}`)
+//     // selectOption.href = ""
+//     selectMenu.appendChild(selectOption)
+// }
 
 // create el params: el, innerHTML, id, class, parent
 createEl(
@@ -277,6 +457,7 @@ function searchUrbanAreas(urbanArea) {
             // ...]
 
             displayAreaQualities(areaQualities);
+            updateStatDisplay(urbanArea, data)
         });
 
     // retrieved salary data of urban area
