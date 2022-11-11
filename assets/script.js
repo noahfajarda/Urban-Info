@@ -84,7 +84,9 @@ var submitBtn = $("#submitBtn");
 submitBtn.on("click", function (event) {
     var userInput = document.getElementById("myInput").value;
     searchUrbanAreas(userInput);
-    addUrbanButton(userInput);
+    if (urbanAreas.includes(userInput)) {
+        addUrbanButton(userInput);
+    }
     document.getElementById("myInput").value = "";
 });
 
@@ -259,8 +261,13 @@ var dataMap = [
         selector: $("#businessFreedom"),
     },
 ];
+
 // search urban areas for their data (area qualities & Salary data)
 function searchUrbanAreas(urbanArea) {
+    if (!urbanAreas.includes(urbanArea)) {
+        return;
+    }
+
     urbanArea = urbanArea.replaceAll(" ", "-");
     console.log(urbanArea);
     urbanData(urbanArea)
@@ -276,7 +283,7 @@ function searchUrbanAreas(urbanArea) {
 
             // display urban name
             // var areaVal =
-            // $("#urbanAreaName").text(urbanArea);
+            $("#urbanAreaName").text(urbanArea);
 
             // IF using an array
             for (var i = 0; i < areaQualities.length; i++) {
@@ -377,38 +384,38 @@ function retrieveCategoryData(data) {
             //businss Freedom
             selector: $("#businessFreedom"),
             value: `Business Freedom - ${
-                categories[0].data[0]?.float_value || "unknown"
+                categories[0].data[0]?.float_value.toFixed(2) || "unknown"
             }`,
         },
         {
             selector: $("#corruptionFreedom"),
             value: `Corruption Freedom - ${
-                categories[0].data[2]?.float_value || "Unknown"
+                categories[0].data[2]?.float_value.toFixed(2) || "Unknown"
             }`,
         },
         {
             selector: $("#laborRestrictions"),
             value: `Labor Restrictions - ${
-                categories[0].data[4]?.float_value || "Unknown"
+                categories[0].data[4]?.float_value.toFixed(2) || "Unknown"
             }`,
         },
         {
             //city size
             selector: $("#cityCenterPopulationDensity"),
             value: `City Center Population Density - ${
-                categories[1].data[2]?.float_value || "Unknown"
+                categories[1].data[2]?.float_value.toFixed(2) || "Unknown"
             }`,
         },
         {
             selector: $("#UAPopulationDensity"),
             value: `UA Population Density - ${
-                categories[1].data[1]?.float_value || "Unknown"
+                categories[1].data[1]?.float_value.toFixed(2) || "Unknown"
             }`,
         },
         {
             selector: $("#UAPopulationSize"),
             value: `UA Population Size - ${
-                categories[1].data[0]?.float_value || "Unknown"
+                categories[1].data[0]?.float_value.toFixed(2) || "Unknown"
             }`,
         },
         {
@@ -440,7 +447,7 @@ function retrieveCategoryData(data) {
             //cost of living
             selector: $("#consumerPriceIndex"),
             value: `Consumer Price Index - ${
-                categories[3].data[0]?.float_value || "Unknown"
+                categories[3].data[0]?.float_value.toFixed(2) || "Unknown"
             }`,
         },
         {
@@ -459,13 +466,14 @@ function retrieveCategoryData(data) {
             //economy
             selector: $("#GDPGrowthRate"),
             value: `GDP Growth Rate - ${
-                categories[5].data[2]?.percent_value || "Unknown"
+                categories[5].data[2]?.percent_value.toFixed(3) || "Unknown"
             }`,
         },
         {
             selector: $("#GDPPerCapita"),
             value: `GDP Per Capita - ${
-                categories[5].data[4]?.currency_dollar_value || "Unknown"
+                categories[5].data[4]?.currency_dollar_value.toFixed(2) ||
+                "Unknown"
             }`,
         },
         {
@@ -484,81 +492,83 @@ function retrieveCategoryData(data) {
         {
             selector: $("#pisaRanking"),
             value: `Pisa Ranking - ${
-                categories[6].data[11]?.int_value || "Unknown"
+                categories[6].data[11]?.int_value.toFixed(2) || "Unknown"
             }`,
         },
         {
             selector: $("#pisaRankingTelescore"),
             value: `Pisa Ranking Telescore - ${
-                categories[6].data[12]?.float_value || "Unknown"
+                categories[6].data[12]?.float_value.toFixed(2) || "Unknown"
             }`,
         },
         {
             selector: $("#studentHappiness"),
             value: `Student Happiness Index - ${
-                categories[6].data[0]?.percent_value || "Unknown"
+                categories[6].data[0]?.percent_value.toFixed(3) || "Unknown"
             }`,
         },
         {
             //health care
             selector: $("#Cost"),
-            value: `Cost - ${categories[7].data[2]?.float_value || "Unknown"}`,
+            value: `Cost - ${
+                categories[7].data[2]?.float_value.toFixed(3) || "Unknown"
+            }`,
         },
         {
             selector: $("#Quality"),
             value: `Quality - ${
-                categories[7].data[2]?.float_value || "Unknown"
+                categories[7].data[2]?.float_value.toFixed(3) || "Unknown"
             }`,
         },
         {
             //Pollution
             selector: $("#airPollution"),
             value: `Air Pollution - ${
-                categories[15].data[0]?.float_value || "Unknown"
+                categories[15].data[0]?.float_value.toFixed(2) || "Unknown"
             }`,
         },
         {
             selector: $("#cleanliness"),
             value: `Cleanliness - ${
-                categories[15].data[1]?.float_value || "Unknown"
+                categories[15].data[1]?.float_value.toFixed(2) || "Unknown"
             }`,
         },
         {
             selector: $("#waterQuality"),
             value: `Water Quality - ${
-                categories[15].data[2]?.float_value || "Unknown"
+                categories[15].data[2]?.float_value.toFixed(2) || "Unknown"
             }`,
         },
         {
             //Safety
             selector: $("#crimeRate"),
             value: `Crime Rate - ${
-                categories[16].data[0]?.float_value || "Unknown"
+                categories[16].data[0]?.float_value.toFixed(2) || "Unknown"
             }`,
         },
         {
             selector: $("#gunDeathScore"),
             value: `Gun Death Score - ${
-                categories[16].data[2]?.float_value || "Unknown"
+                categories[16].data[2]?.float_value.toFixed(2) || "Unknown"
             }`,
         },
         {
             selector: $("#gunOwnerShipScore"),
             value: `Gun Ownership Score - ${
-                categories[16].data[4]?.float_value || "Unknown"
+                categories[16].data[4]?.float_value.toFixed(2) || "Unknown"
             }`,
         },
         {
             //taxation
             selector: $("#incomeTax"),
             value: `Income Tax - ${
-                categories[18].data[2]?.float_value || "Unknown"
+                categories[18].data[2]?.float_value.toFixed(2) || "Unknown"
             }`,
         },
         {
             selector: $("#salesTax"),
             value: `Sales Tax - ${
-                categories[18].data[3]?.percent_value || "Unknown"
+                categories[18].data[3]?.percent_value.toFixed(2) || "Unknown"
             }`,
         },
     ];
