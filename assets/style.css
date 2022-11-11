@@ -1,15 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Asap&family=Roboto:ital,wght@0,500;0,900;1,500&display=swap");
 * {
     box-sizing: border-box;
 }
+/* body */
 body {
     font: 16px Arial;
+    margin: 0px;
+    padding: 0px;
+    /* font-family: "Asap", sans-serif; */
+    background-color: #fdfdfe;
 }
-.autocomplete {
-    /*the container must be positioned relative:*/
-    position: relative;
-    display: inline-block;
+/* header */
+header {
+    width: 100%;
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-color: #00c2cb;
 }
+header h1 {
+    position: absolute;
+    text-align: center;
+    width: 90%;
+    font-size: 7vw;
+    font-weight: 600;
+    color: transparent;
+    background-image: linear-gradient(
+        to right,
+        #553c9a,
+        #ee4b2b,
+        #1a10d7,
+        #ff7f50,
+        #553c9a
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-size: 200%;
+    background-position: -200%;
+    animation: animated-gradient 5s infinite alternate-reverse;
 
+    -webkit-text-stroke: 1px black; /* width and color */
+}
+/* main */
+main {
+    padding: 40px;
+}
+/* input Elements */
 input {
     border: 1px solid transparent;
     background-color: #f1f1f1;
@@ -23,6 +61,26 @@ input[type="text"] {
 input[type="submit"] {
     background-color: DodgerBlue;
     color: #fff;
+}
+/* button Elements */
+button.urbanArea {
+    height: 50px;
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    background-color: #00c2cb;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* classes */
+/* autocomplete */
+.autocomplete {
+    /*the container must be positioned relative:*/
+    position: relative;
+    display: inline-block;
 }
 .autocomplete-items {
     position: absolute;
@@ -50,3 +108,17 @@ input[type="submit"] {
     background-color: DodgerBlue !important;
     color: #ffffff;
 }
+
+#searchSection form {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* key frames */
+@keyframes animated-gradient {
+    to {
+        background-position: 200%;
+    }
+}
+
+/* media querries */

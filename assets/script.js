@@ -1,6 +1,6 @@
 // utility function to dynamically create and append elements
 // function can also accept ids & classes
-function createEl(element, innerHTML, id = "", classes = "") {
+function createEl(element, innerHTML, id = "", classes = "", parent = "") {
     var element = document.createElement(element);
     element.innerHTML = innerHTML;
     // add classes
@@ -24,6 +24,204 @@ function createEl(element, innerHTML, id = "", classes = "") {
 
 createEl("nav", "<h2>Is My City Cool?</h2>", ["class1", "class2"]);
 createEl("aside", "<aside>Is My City Cool?</aside>");
+    // parent
+    // console.log(parent);
+    if (parent !== "") {
+        $(parent).append(element);
+    } else {
+        document.body.appendChild(element);
+    }
+}
+    document.body.appendChild(element);
+    element.setAttribute("class", `${classNames}`)
+    element.setAttribute("id", `${idName}`)
+}
+
+// var nav1 = createEl("nav", "Is My City Cool?", "border-dark row")
+// createEl("a", "About the team", "border-dark")
+// createEl("a", "About the project", "border-dark")
+// document.body.appendChild(document.querySelector("#about1"))
+// nav1.appendChild(document.querySelector("#about2"))
+
+    // TODO: create column arrangement
+    // https://getbootstrap.com/docs/4.0/components/dropdowns/
+
+// var aside1 = createEl("aside", "Test", "border-dark", "aside1")
+
+
+// NOTES:creating dropdown for city list
+
+// var aside1 = document.createElement("aside");
+//     aside1.innerHTML = `
+//     <div class="dropdown show">
+//       <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+//         Dropdown link
+//       </a>
+    
+//       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+//       </div>
+//     </div>`
+//     document.body.appendChild(aside1);
+
+// var selectMenu = document.querySelector(".dropdown-menu")
+
+// // adding city list data to dropdown
+// // NOTEs: currently adds to ".dropdown-menu" div, but DOES NOT function correctly
+
+// for (i = 0; i < urbanAreas.length; i++) {
+//     createEl("a", `${urbanAreas[i]}`, "dropdown-item areaOptions", "")
+//     var selectOption = document.querySelector(`areaOptions`)
+//     // selectOption.href = ""
+//     selectMenu.appendChild(selectOption)
+// }
+
+var statDisplay = createEl("div", "", "", "");
+
+// NOTES: function for stat display, one string for all html
+// called on line 608, but i get "VM10:6789 crbug/1173575, non-JS module files deprecated." in console. let me know if you have the same issue -Brandon
+// https://stackoverflow.com/questions/67191286/crbug-1173575-non-js-module-files-deprecated-chromewebdata-index%EA%9E%89530595551 
+function updateStatDisplay(cityName, data) {
+    statDisplay.innerHTML = `
+    <h2> ${cityName}<h2>
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Business Freedom
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item">Business Freedom: ${data.categories[0].data[0]}</a>
+            <a class="dropdown-item">Corruption Freedom: ${data.categories[0].data[2]}</a>
+            <a class="dropdown-item">"Labor Restrictions": ${data.categories[0].data[4]}</a>
+        </div>
+    </div>
+
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            City Size
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item">UA Population Size: ${data.categories[1].data[0]}</a>
+            <a class="dropdown-item">UA Population Density: ${data.categories[1].data[1]}</a>
+            <a class="dropdown-item"> City Center Population Density: ${data.categories[1].data[2]}</a>
+        </div>
+    </div>
+    
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Cost of Living
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item">Consumer Price Index: ${data.categories[3].data[0]}</a>
+            <a class="dropdown-item">Cost of Public Transport: ${data.categories[3].data[7]}</a>
+            <a class="dropdown-item">Cost of Restaurant Meal: ${data.categories[3].data[8]}</a>
+        </div>
+    </div>
+
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Economy
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item">GDP Growth Rate: ${data.categories[5].data[2]}</a>
+            <a class="dropdown-item">GDP Per Capita: ${data.categories[1].data[4]}</a>
+        </div>
+    </div>
+    
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Education
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item">Student Happiness: ${data.categories[6].data[0]}</a>
+            <a class="dropdown-item">PISA Ranking: ${data.categories[6].data[11]}</a>
+            <a class="dropdown-item">PISA Ranking Telescore: ${data.categories[6].data[12]}</a>
+            <a class="dropdown-item">Best University: ${data.categories[6].data[16]}</a>
+            <a class="dropdown-item">Best University Rank: ${data.categories[6].data[17]}</a>
+        </div>
+    </div>
+
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Healthcare
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item">Cost: ${data.categories[7].data[0]}</a>
+            <a class="dropdown-item">Quality: ${data.categories[7].data[3]}</a>
+        </div>
+    </div>
+
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Housing
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item">Rent for a Large Apartment: ${data.categories[8].data[0]}</a>
+            <a class="dropdown-item">Rent for a Medium Apartment: ${data.categories[8].data[1]}</a>
+            <a class="dropdown-item">Rent for a Small Apartment: ${data.categories[8].data[2]}</a>
+            <a class="dropdown-item">Rent Index Telescore: ${data.categories[8].data[3]}</a>
+        </div>
+    </div>
+
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Pollution
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item">Air Pollution: ${data.categories[15].data[0]}</a>
+            <a class="dropdown-item">Cleanliness: ${data.categories[15].data[1]}</a>
+            <a class="dropdown-item">Water Quality: ${data.categories[15].data[3]}</a>
+        </div>
+    </div>
+
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Safety
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item">Crime Rate: ${data.categories[16].data[0]}</a>
+            <a class="dropdown-item">Gun Death Score: ${data.categories[16].data[2]}</a>
+            <a class="dropdown-item">Gun Ownership Score: ${data.categories[16].data[4]}</a>
+        </div>
+    </div>
+
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Taxation
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item">Income Tax: ${data.categories[18].data[2]}</a>
+            <a class="dropdown-item">Sales Tax: ${data.categories[18].data[3]}</a>
+        </div>
+    </div>
+
+    <div class="dropdown show">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Traffic
+    </a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item">Traffic handling: ${data.categories[19].data[1]}</a>
+    </div>
+    </div>
+    `
+}
+
+
+// NOTE: old "for" loop, ignore or delete -Brandon
+// for (i = 0; i < areaQualities.length; i++) {
+//         createEl("div", `${areaQualities[i]}`, "dropdown-item statOption", `statOption${[i]}`)
+//     var selectOption = document.querySelector(`#statOption${[i]}`)
+//     // selectOption.href = ""
+//     selectMenu.appendChild(selectOption)
+// }
+
+// create el params: el, innerHTML, id, class, parent
+createEl(
+    "nav",
+    "<h2>Created on line 32 JS?</h2>",
+    "",
+    ["class1", "class2"],
+    "body"
+);
+createEl("aside", "<aside>Created on line 32 JS?</aside>", "", "", "body");
 
 // function to create search bars
 // reason: city & urban area event listeners
@@ -52,13 +250,14 @@ function createSearchBar(type) {
 createSearchBar("Urban Area");
 createSearchBar("City");
 createEl("br", "<br>");
+createEl("br", "<br>", "", "", "main");
 
 // upon pressing enter in Logan's input box, it retrieves the data
 var userInput = $("#myInput");
 userInput.on("keyup", function (event) {
     // different actions depending on searchBarID
     // when user presses enter:
-    if (event.key === "Enter") {
+    if (event.key === "Enter" && event.target.value !== "") {
         // search for urban area upon enter
         searchUrbanAreas(event.target.value);
         addUrbanButton(event.target.value);
@@ -81,7 +280,11 @@ function addUrbanButton(userInput) {
         // if UA doesn't exist
         syncLocalStorage(userInput);
         // prettier-ignore
-        createEl("button", userInput, (id = userInput), (classes = "urbanArea"));
+        createEl("button", userInput, (id = userInput.replaceAll(" ", "")), (classes = "urbanArea"), "#searchSection");
+        console.log("#" + userInput);
+        $("#" + userInput.replaceAll(" ", "")).on("click", function () {
+            searchUrbanAreas(userInput);
+        });
     } else {
         console.log("NOT ADDED:", urbanAreasHistory);
     }
@@ -110,8 +313,12 @@ createUrbanButtonsLocal(localStorage.getItem("Urban Area History"));
 
 // TODO: clear button
 
-// prettier-ignore
-var urbanAreas = ["Aarhus", "Adelaide", "Albuquerque", "Almaty", "Amsterdam", "Anchorage", "Ankara", "Asheville", "Asuncion", "Athens", "Atlanta", "Auckland", "Austin", "Baku", "Bali", "Bangkok", "Barcelona", "Beijing", "Beirut", "Belfast", "Belgrade", "Belize City", "Bengaluru", "Berlin", "Bern", "Birmingham", "Birmingham, AL", "Bogota", "Boise", "Bologna", "Bordeaux", "Boston", "Boulder", "Bozeman", "Bratislava", "Brisbane", "Bristol", "Brussels", "Bucharest", "Budapest", "Buenos Aires", "Buffalo", "Cairo", "Calgary", "Cambridge", "Cape Town", "Caracas", "Cardiff", "Casablanca", "Charleston", "Charlotte", "Chattanooga","Chennai", "Chiang Mai", "Chicago", "Chisinau", "Christchurch", "Cincinnati", "Cleveland", "Cluj-Napoca", "Cologne", "Colorado Springs", "Columbus", "Copenhagen", "Cork", "Curitiba", "Dallas", "Dar es Salaam", "Delhi", "Denver", "Des Moines", "Detroit", "Doha", "Dresden", "Dubai", "Dublin", "Dusseldorf", "Edinburgh", "Edmonton", "Eindhoven", "Eugene", "Florence", "Florianopolis", "Fort Collins", "Frankfurt", "Fukuoka", "Galway", "Gdansk", "Geneva", "Glasgow", "Gothenburg", "Grenoble", "Guadalajara", "Guatemala City", "Halifax", "Hamburg", "Hannover", "Havana", "Helsinki", "Ho Chi Minh City", "Hong Kong", "Honolulu", "Houston", "Hyderabad", "Indianapolis", "Innsbruck", "Istanbul", "Jacksonville", "Jakarta", "Johannesburg", "Kansas City", "Karlsruhe", "Kathmandu", "Kiev", "Kingston", "Knoxville", "Krakow", "Kuala Lumpur", "Lagos", "La Paz", "Las Palmas de Gran Canaria", "Las Vegas", "Lausanne", "Leipzig", "Lille", "Lima", "Lisbon", "Liverpool", "Ljubljana", "London", "Los Angeles", "Louisville", "Luxembourg", "Lviv", "Lyon", "Madison", "Madrid", "Malaga", "Malmo", "Managua", "Manchester", "Manila", "Marseille", "Medellin", "Melbourne", "Memphis", "Mexico City", "Miami", "Milan", "Milwaukee", "Minneapolis-Saint Paul", "Minsk", "Montevideo", "Montreal", "Moscow", "Mumbai", "Munich", "Nairobi", "Nantes", "Naples", "Nashville", "New Orleans", "New York", "Nice", "Nicosia", "Oklahoma City", "Omaha", "Orlando", "Osaka", "Oslo", "Ottawa", "Oulu", "Oxford", "Palo Alto", "Panama", "Paris", "Perth", "Philadelphia", "Phnom Penh", "Phoenix", "Phuket", "Pittsburgh", "Portland, ME", "Portland, OR", "Porto", "Porto Alegre", "Prague", "Providence", "Quito", "Raleigh", "Reykjavik", "Richmond", "Riga", "Rio De Janeiro", "Riyadh", "Rochester", "Rome", "Rotterdam", "Saint Petersburg", "Salt Lake City", "San Antonio", "San Diego", "San Francisco Bay Area", "San Jose", "San Juan", "San Luis Obispo", "San Salvador", "Santiago", "Santo Domingo", "Sao Paulo", "Sarajevo", "Saskatoon", "Seattle", "Seoul", "Seville", "Shanghai", "Singapore", "Skopje", "Sofia", "St. Louis", "Stockholm", "Stuttgart", "Sydney", "Taipei", "Tallinn", "Tampa Bay Area", "Tampere", "Tartu", "Tashkent", "Tbilisi", "Tehran", "Tel Aviv", "The Hague", "Thessaloniki", "Tokyo", "Toronto", "Toulouse", "Tunis", "Turin", "Turku", "Uppsala", "Utrecht", "Valencia", "Valletta", "Vancouver", "Victoria", "Vienna", "Vilnius", "Warsaw", "Washington, D.C.", "Wellington", "Winnipeg", "Wroclaw", "Yerevan", "Zagreb", "Zurich"];
+function retrieveAllUrbanAreas() {
+    // prettier-ignore
+    var urbanAreas = ["Aarhus", "Adelaide", "Albuquerque", "Almaty", "Amsterdam", "Anchorage", "Ankara", "Asheville", "Asuncion", "Athens", "Atlanta", "Auckland", "Austin", "Baku", "Bali", "Bangkok", "Barcelona", "Beijing", "Beirut", "Belfast", "Belgrade", "Belize City", "Bengaluru", "Berlin", "Bern", "Birmingham", "Birmingham, AL", "Bogota", "Boise", "Bologna", "Bordeaux", "Boston", "Boulder", "Bozeman", "Bratislava", "Brisbane", "Bristol", "Brussels", "Bucharest", "Budapest", "Buenos Aires", "Buffalo", "Cairo", "Calgary", "Cambridge", "Cape Town", "Caracas", "Cardiff", "Casablanca", "Charleston", "Charlotte", "Chattanooga","Chennai", "Chiang Mai", "Chicago", "Chisinau", "Christchurch", "Cincinnati", "Cleveland", "Cluj-Napoca", "Cologne", "Colorado Springs", "Columbus", "Copenhagen", "Cork", "Curitiba", "Dallas", "Dar es Salaam", "Delhi", "Denver", "Des Moines", "Detroit", "Doha", "Dresden", "Dubai", "Dublin", "Dusseldorf", "Edinburgh", "Edmonton", "Eindhoven", "Eugene", "Florence", "Florianopolis", "Fort Collins", "Frankfurt", "Fukuoka", "Galway", "Gdansk", "Geneva", "Glasgow", "Gothenburg", "Grenoble", "Guadalajara", "Guatemala City", "Halifax", "Hamburg", "Hannover", "Havana", "Helsinki", "Ho Chi Minh City", "Hong Kong", "Honolulu", "Houston", "Hyderabad", "Indianapolis", "Innsbruck", "Istanbul", "Jacksonville", "Jakarta", "Johannesburg", "Kansas City", "Karlsruhe", "Kathmandu", "Kiev", "Kingston", "Knoxville", "Krakow", "Kuala Lumpur", "Lagos", "La Paz", "Las Palmas de Gran Canaria", "Las Vegas", "Lausanne", "Leipzig", "Lille", "Lima", "Lisbon", "Liverpool", "Ljubljana", "London", "Los Angeles", "Louisville", "Luxembourg", "Lviv", "Lyon", "Madison", "Madrid", "Malaga", "Malmo", "Managua", "Manchester", "Manila", "Marseille", "Medellin", "Melbourne", "Memphis", "Mexico City", "Miami", "Milan", "Milwaukee", "Minneapolis-Saint Paul", "Minsk", "Montevideo", "Montreal", "Moscow", "Mumbai", "Munich", "Nairobi", "Nantes", "Naples", "Nashville", "New Orleans", "New York", "Nice", "Nicosia", "Oklahoma City", "Omaha", "Orlando", "Osaka", "Oslo", "Ottawa", "Oulu", "Oxford", "Palo Alto", "Panama", "Paris", "Perth", "Philadelphia", "Phnom Penh", "Phoenix", "Phuket", "Pittsburgh", "Portland, ME", "Portland, OR", "Porto", "Porto Alegre", "Prague", "Providence", "Quito", "Raleigh", "Reykjavik", "Richmond", "Riga", "Rio De Janeiro", "Riyadh", "Rochester", "Rome", "Rotterdam", "Saint Petersburg", "Salt Lake City", "San Antonio", "San Diego", "San Francisco Bay Area", "San Jose", "San Juan", "San Luis Obispo", "San Salvador", "Santiago", "Santo Domingo", "Sao Paulo", "Sarajevo", "Saskatoon", "Seattle", "Seoul", "Seville", "Shanghai", "Singapore", "Skopje", "Sofia", "St. Louis", "Stockholm", "Stuttgart", "Sydney", "Taipei", "Tallinn", "Tampa Bay Area", "Tampere", "Tartu", "Tashkent", "Tbilisi", "Tehran", "Tel Aviv", "The Hague", "Thessaloniki", "Tokyo", "Toronto", "Toulouse", "Tunis", "Turin", "Turku", "Uppsala", "Utrecht", "Valencia", "Valletta", "Vancouver", "Victoria", "Vienna", "Vilnius", "Warsaw", "Washington, D.C.", "Wellington", "Winnipeg", "Wroclaw", "Yerevan", "Zagreb", "Zurich"];
+    return urbanAreas;
+}
+var urbanAreas = retrieveAllUrbanAreas();
 
 //autocomplete code from: https://www.w3schools.com/howto/howto_js_autocomplete.asp
 function autocomplete(inp, arr) {
@@ -240,20 +447,23 @@ urbanAreasList()
         console.log("Array of Urban Areas: ", urbanAreaNameList);
     });
 
-// search urban areas
+// search urban areas for their data (area qualities & Salary data)
 function searchUrbanAreas(urbanArea) {
     urbanArea = urbanArea.replaceAll(" ", "-");
     console.log(urbanArea);
     urbanData(urbanArea)
         .then((response) => response.json())
         .then((data) => {
-            // console.log("Details:", data);
+            // all data we need
             var areaQualities = retrieveCategoryData(data);
             console.log("Area Qualities:", areaQualities);
             // structure of Area Qualities array:
             // [{"Category": {"SubCategory": "", "SubCategory": "", ...}},
             // {"Category": {"SubCategory": "", "SubCategory": "", ...}},
             // ...]
+
+            displayAreaQualities(areaQualities);
+            updateStatDisplay(urbanArea, data)
         });
 
     // retrieved salary data of urban area
@@ -267,6 +477,170 @@ function searchUrbanAreas(urbanArea) {
             // structure of Salary Data array:
             // [{Job Title: "", Salaries: [25th_Percentile, 50th_Percentile, 75th_Percentile]},...]
         });
+}
+
+function displayAreaQualities(areaQualities) {
+    // business Freedom category
+    var businessFreedomVal =
+        areaQualities["Business Freedom"]["Business Freedom"].float_value;
+    $("#businessFreedom").text(`
+Business Freedom: ${businessFreedomVal}`);
+
+    var corruptionFreedomVal =
+        areaQualities["Business Freedom"]["Corruption Freedom"].float_value;
+    $("#corruptionFreedom").text(`
+Corruption Freedom: ${corruptionFreedomVal}`);
+
+    var laborRestrictionsVal =
+        areaQualities["Business Freedom"]["Labor Restrictions"].float_value;
+    $("#laborRestrictions").text(`
+Labor Restrictions: ${laborRestrictionsVal}`);
+
+    //city size category
+    var cityCenterPopVal = //city center density
+        areaQualities["City Size"]["City Center Population Density"]
+            .float_value;
+    $("#cityCenterPopulationDensity").text(`
+City Center Population Density: ${cityCenterPopVal}`);
+
+    var uaPopulationDensityVal = //population density
+        areaQualities["City Size"]["UA Population Density"].float_value;
+    $("#UAPopulationDensity").text(`
+UA Population Density: ${uaPopulationDensityVal}`);
+
+    var UApopSizeVal = //population size
+        areaQualities["City Size"]["UA Population Size"].float_value;
+    $("#UAPopulationSize").text(`
+UA Population Size: ${UApopSizeVal}`);
+
+    //Cost of Housing
+    var largeApartmentRent = //Apartment Rent for Large Apartment
+        areaQualities["Cost of Housing"]["Apartment Rent for Large Apartment"]
+            .currency_dollar_value;
+    $("#apartmentRentForLargeApartment").text(`
+Large Apartment Average Rent: ${largeApartmentRent}`);
+
+    var mediumApartmentRent = //Apartment Rent for Medium Apartment
+        areaQualities["Cost of Housing"]["Apartment Rent for Medium Apartment"]
+            .currency_dollar_value;
+    $("#apartmentRentForMediumApartment").text(`
+Medium Apartment Average Rent: ${mediumApartmentRent}`);
+
+    var smallApartmentRent = //Apartment Rent for Small Apartment
+        areaQualities["Cost of Housing"]["Apartment Rent for Small Apartment"]
+            .currency_dollar_value;
+    $("#apartmentRentForSmallApartment").text(`
+Small Apartment Average Rent: ${smallApartmentRent}`);
+
+    var rentIndexTelescoreVal = //Rent Index Telescore
+        areaQualities["Cost of Housing"]["Rent Index Telescore"].float_value;
+    $("#rentIndexTelescore").text(`
+Rent Index Score: ${rentIndexTelescoreVal}`);
+
+    //Cost of Living category
+    var consumerPriceVal = //Consumer Price Index
+        areaQualities["Cost of Living"]["Consumer Price Index"].float_value;
+    $("#consumerPriceIndex").text(`
+    Consumer Price Index: ${consumerPriceVal}`);
+
+    var costPublicTransportVal = //cost of public transport
+        areaQualities["Cost of Living"]["Cost of Public Transport"]
+            .currency_dollar_value;
+    $("#costOfPublicTransport").text(`
+    Cost of Public Transport: ${costPublicTransportVal}`);
+
+    var costMealVal = //cost of a restaurant meal
+        areaQualities["Cost of Living"]["Cost of Restaurant Meal"]
+            .currency_dollar_value;
+    $("#costOfRestaurantMeal").text(`
+    Cost of Restaurant Meal: ${costMealVal}`);
+
+    //Economy category
+    var GDPgrowthRateVal =
+        areaQualities["Economy"]["GDP Growth Rate"].percent_value; //gdp growth rate
+    $("#GDPGrowthRate").text(`
+ GDP Growth Rate: ${GDPgrowthRateVal}`);
+
+    var GDPPerCapitaVal = //gdp per capita
+        areaQualities["Economy"]["GDP Per Capita"].currency_dollar_value;
+    $("#GDPPerCapita").text(`
+GDP Per Capita: ${GDPPerCapitaVal}`);
+
+    //Education
+
+    var bestUniversity = //Best University
+        areaQualities["Education"]["Best University"].string_value;
+    $("#bestUniversity").text(`
+    Best University: ${bestUniversity}`);
+
+    var bestUniversityRankVal = //Best University Rank
+        areaQualities["Education"]["Best University Rank"].int_value;
+    $("#bestUniversityRank").text(`
+    Best University Rank: ${bestUniversityRankVal}`);
+
+    var studentHappinessVal = //Student Happiness
+        areaQualities["Education"]["Student Happiness"].percent_value;
+    $("#StudentHappiness").text(`
+    Student Happiness: ${studentHappinessVal}`);
+
+    var pisaRankingVal = areaQualities["Education"]["PISA Ranking"].int_value; //PISA Ranking
+    $("#PISARanking").text(`
+    PISA Ranking: ${pisaRankingVal}`);
+
+    var pisaRankingTelescoreVal = //PISA Ranking Telescore
+        areaQualities["Education"]["PISA Ranking Telescore"].float_value;
+    $("#PISARankingTelescore").text(`
+    PISA Ranking Telescore: ${pisaRankingTelescoreVal}`);
+
+    //Health Care
+    var costVal = areaQualities["Health Care"]["Cost"].float_value; //Cost
+    $("#Cost").text(`
+Cost of Health Care: ${costVal}`);
+
+    var qualityVal = areaQualities["Health Care"]["Quality"].float_value; //Quality
+    $("#Quality").text(`
+Health Care Quality: ${qualityVal}`);
+
+    // DISREGARD FOR NOW
+
+    //Pollution
+    var airPollutionVal = //Air Polution
+        areaQualities["Pollution"]["Air Pollution"].float_value;
+    $("#airPollution").text(`
+    Air Pollution: ${airPollutionVal}`);
+
+    var cleanlinessVal = areaQualities["Pollution"]["Cleanliness"].float_value; //Cleanliness
+    $("#cleanliness").text(`
+Cleanliness: ${cleanlinessVal}`);
+
+    var waterQualityVal = //waterQuality
+        areaQualities["Pollution"]["Water Quality"].float_value;
+    $("#waterQuality").text(`
+    Water Quality: ${waterQualityVal}`);
+
+    //Safety
+    var crimeRateVal = areaQualities["Safety"]["Crime Rate"].float_value; //Crime Rate
+    $("#crimeRate").text(`
+Crime Rate: ${crimeRateVal}`);
+
+    var gunDeathScoreVal = //Gun Death Score
+        areaQualities["Safety"]["Gun Death Score"].float_value;
+    $("#gunDeathScore").text(`
+Gun Death Score: ${gunDeathScoreVal}`);
+
+    var gunOwnershipScoreVal = //Gun Ownership Score
+        areaQualities["Safety"]["Gun Ownership Score"].float_value;
+    $("#gunOwnerShipScore").text(`
+Gun Ownership Score: ${gunOwnershipScoreVal}`);
+
+    //Taxation
+    var incomeTaxVal = areaQualities["Taxation"]["Income Tax"].float_value; //Income Tax
+    $("#incomeTax").text(`
+Income Tax: ${incomeTaxVal}`);
+
+    var salesTaxVal = areaQualities["Taxation"]["Sales Tax"].percent_value; //Sales Tax
+    $("#salesTax").text(`
+Sales Tax: ${salesTaxVal}`);
 }
 
 // retrieves all salaries from all occupations of urban area
