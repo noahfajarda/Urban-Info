@@ -13,7 +13,7 @@ body {
 /* header */
 header {
     width: 100%;
-    height: 15vh;
+    height: 25vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,7 +24,7 @@ header h1 {
     position: absolute;
     text-align: center;
     width: 90%;
-    font-size: 3.5vw;
+    font-size: 7vw;
     font-weight: 600;
     color: transparent;
     background-image: linear-gradient(
@@ -65,7 +65,14 @@ input[type="submit"] {
 /* button Elements */
 button.urbanArea {
     height: 50px;
-    margin: 10px;
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    background-color: #00c2cb;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 /* classes */
@@ -100,6 +107,11 @@ button.urbanArea {
     /*when navigating through the items using the arrow keys:*/
     background-color: DodgerBlue !important;
     color: #ffffff;
+}
+
+#searchSection form {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 /* key frames */
