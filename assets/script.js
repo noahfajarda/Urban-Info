@@ -28,44 +28,6 @@ function createEl(element, innerHTML, id = "", classes = "", parent = "") {
     }
 }
 
-// create el params: el, innerHTML, id, class, parent
-createEl(
-    "nav",
-    "<h2>Created on line 32 JS?</h2>",
-    "",
-    ["class1", "class2"],
-    "body"
-);
-createEl("aside", "<aside>Created on line 32 JS?</aside>", "", "", "body");
-
-// function to create search bars
-// reason: city & urban area event listeners
-function createSearchBar(type) {
-    // add input element to page
-    var userInput = document.createElement("input");
-    userInput.setAttribute("id", type);
-    userInput.setAttribute("placeholder", type);
-    document.body.appendChild(userInput);
-
-    userInput.addEventListener("keyup", function (event) {
-        // different actions depending on searchBarID
-        // when user presses enter:
-        if (event.key === "Enter") {
-            if (this.id === "Urban Area") {
-                // search for urban area upon enter
-                searchUrbanAreas(event.target.value);
-            } else if (this.id === "City") {
-                console.log("function for urban area");
-            }
-        }
-    });
-}
-
-// add 'Urban Area' & 'city' input elements to page
-createSearchBar("Urban Area");
-createSearchBar("City");
-createEl("br", "<br>", "", "", "main");
-
 // upon pressing enter in Logan's input box, it retrieves the data
 var userInput = $("#myInput");
 userInput.on("keyup", function (event) {
