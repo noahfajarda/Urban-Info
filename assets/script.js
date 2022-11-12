@@ -405,19 +405,19 @@ function retrieveCategoryData(data) {
         {
             //cost of housing
             selector: $("#apartmentRentForLargeApartment"),
-            value: `Apartment Rent for Large Apartment - ${
+            value: `Apartment Rent for Large Apartment - $${
                 categories[8].data[0]?.currency_dollar_value || "Unknown"
             }`,
         },
         {
             selector: $("#apartmentRentForMediumApartment"),
-            value: `Apartment Rent for Medium Apartment - ${
+            value: `Apartment Rent for Medium Apartment - $${
                 categories[8].data[1]?.currency_dollar_value || "Unknown"
             }`,
         },
         {
             selector: $("#apartmentRentForSmallApartment"),
-            value: `Apartment Rent for Small Apartment - ${
+            value: `Apartment Rent for Small Apartment - $${
                 categories[8].data[2]?.currency_dollar_value || "Unknown"
             }`,
         },
