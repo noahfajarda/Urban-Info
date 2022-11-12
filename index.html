@@ -1,477 +1,467 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- CSS only -->
-        <!-- Bootstrap -->
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-            crossorigin="anonymous"
-        />
-        <link
-            rel="stylesheet"
-            href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-            integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-            crossorigin="anonymous"
-        />
-        <link
-            href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
-            rel="stylesheet"
-        />
-        <!-- google fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap"
-            rel="stylesheet"
-        />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
-        />
-        <!-- JS -->
-        <!-- Bootstrap JavaScript Bundle with Popper -->
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-            crossorigin="anonymous"
-        ></script>
-        <link rel="stylesheet" href="assets/style.css" />
-        <title>We ain't got a name yet homie</title>
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS only -->
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <!-- JS -->
+    <!-- Bootstrap JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="assets/style.css" />
+    <title>We ain't got a name yet homie</title>
+  </head>
 
-    <!-- The background video -->
-    <!-- unmute to add audio -->
-    <video autoplay muted loop id="myVideo">
-        <source src="34.mp4" type="video/mp4" />
-    </video>
-    <body>
-        <!-- HEADER -->
-        <header>
-            <h1>Ayo Dawg</h1>
-        </header>
-        <!-- MAIN -->
-        <main class="row">
-            <!-- END video -->
-            <section class="col-12 col-lg-4" id="searchSection">
-                <div id="stateErrorContainer">
-                    <em id="stateError" class="text-light"
-                        >Enter an Urban Area to retrieve it's statistics!</em
-                    >
-                </div>
-                <form autocomplete="off" action="/action_page.php">
-                    <div class="autocomplete" style="width: 300px">
-                        <input
-                            id="myInput"
-                            type="text"
-                            name="urbanArea"
-                            placeholder="Urban Area"
-                        />
-                    </div>
-                    <button
-                        id="submitBtn"
-                        type="button"
-                        class="btn btn-primary"
-                    >
-                        Submit
-                    </button>
-                </form>
-            </section>
-            <section class="col-8" id="displaySection">
-                <container>
-                    <h1 id="urbanAreaName"></h1>
-                    <h3>Area Qualities</h3>
-                </container>
-                <div class="accordion" id="accordionExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button
-                                class="accordion-button"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne"
-                                aria-expanded="true"
-                                aria-controls="collapseOne"
-                            >
-                                Business Freedom <span>👩🏽‍💼</span>
-                            </button>
-                        </h2>
-                        <div
-                            id="collapseOne"
-                            class="accordion-collapse collapse show"
-                            aria-labelledby="headingOne"
-                            data-bs-parent="#accordionExample"
-                        >
-                            <div class="accordion-body">
-                                <div
-                                    id="businessFreedom"
-                                    class="accordion-body"
-                                >
-                                    BUSFREEDOM PLACEHOLDER
-                                </div>
-                                <div
-                                    id="corruptionFreedom"
-                                    class="accordion-body"
-                                >
-                                    CORFREEDOM PLACEHOLDER
-                                </div>
-                                <div
-                                    id="laborRestrictions"
-                                    class="accordion-body"
-                                >
-                                    LABORRESTRICTIONS PLACEHOLDER
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingTwo">
-                            <button
-                                class="accordion-button collapsed"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#collapseTwo"
-                                aria-expanded="false"
-                                aria-controls="collapseTwo"
-                            >
-                                City Size <span>👩🏽‍💼</span>
-                            </button>
-                        </h2>
-                        <div
-                            id="collapseTwo"
-                            class="accordion-collapse collapse"
-                            aria-labelledby="headingTwo"
-                            data-bs-parent="#accordionExample"
-                        >
-                            <div class="accordion-body">
-                                <div
-                                    id="cityCenterPopulationDensity"
-                                    class="accordion-body"
-                                >
-                                    CITY CENTER POP DENSITY PLACEHOLDER
-                                </div>
-                                <div
-                                    id="UAPopulationDensity"
-                                    class="accordion-body"
-                                >
-                                    UA POPULATION DENSITY PLACEHOLDER
-                                </div>
-                                <div
-                                    id="UAPopulationSize"
-                                    class="accordion-body"
-                                >
-                                    UA POPULATION SIZE PLACEHOLDER
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingThree">
-                            <button
-                                class="accordion-button collapsed"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#collapseThree"
-                                aria-expanded="false"
-                                aria-controls="collapseThree"
-                            >
-                                Cost of Housing <span>👩🏽‍💼</span>
-                            </button>
-                        </h2>
-                        <div
-                            id="collapseThree"
-                            class="accordion-collapse collapse"
-                            aria-labelledby="headingThree"
-                            data-bs-parent="#accordionExample"
-                        >
-                            <div class="accordion-body">
-                                <div
-                                    id="apartmentRentForLargeApartment"
-                                    class="accordion-body"
-                                >
-                                    APARTMENT RENT FOR LARGE APARTMENT
-                                    PLACEHOLDER
-                                </div>
-                                <div
-                                    id="apartmentRentForMediumApartment"
-                                    class="accordion-body"
-                                >
-                                    APARTMENT RENT FOR MEDIUM APARTMENT
-                                    PLACEHOLDER
-                                </div>
-                                <div
-                                    id="apartmentRentForSmallApartment"
-                                    class="accordion-body"
-                                >
-                                    APARTMENT RENT FOR SMALL APARTMENT
-                                    PLACEHOLDER
-                                </div>
-                                <div
-                                    id="rentIndexTelescore"
-                                    class="accordion-body"
-                                >
-                                    RENT INDEX TELESCORE PLACEHOLDER
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingFour">
-                            <button
-                                class="accordion-button collapsed"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#collapseFour"
-                                aria-expanded="false"
-                                aria-controls="collapseFour"
-                            >
-                                Cost of Living <span>👩🏽‍💼</span>
-                            </button>
-                        </h2>
-                        <div
-                            id="collapseFour"
-                            class="accordion-collapse collapse"
-                            aria-labelledby="headingFour"
-                            data-bs-parent="#accordionExample"
-                        >
-                            <div class="accordion-body">
-                                <div
-                                    id="consumerPriceIndex"
-                                    class="accordion-body"
-                                >
-                                    Consumer Price Index Placeholder
-                                </div>
-                                <div
-                                    id="costOfPublicTransport"
-                                    class="accordion-body"
-                                >
-                                    Cost of Public Transport Placeholder
-                                </div>
-                                <div
-                                    id="costOfRestaurantMeal"
-                                    class="accordion-body"
-                                >
-                                    Cost of Restaurant Meal Placeholder
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingFive">
-                            <button
-                                class="accordion-button collapsed"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#collapseFive"
-                                aria-expanded="false"
-                                aria-controls="collapseFive"
-                            >
-                                Economy <span>👩🏽‍💼</span>
-                            </button>
-                        </h2>
-                        <div
-                            id="collapseFive"
-                            class="accordion-collapse collapse"
-                            aria-labelledby="headingFive"
-                            data-bs-parent="#accordionExample"
-                        >
-                            <div class="accordion-body">
-                                <div id="GDPGrowthRate" class="accordion-body">
-                                    GDP Growth Rate
-                                </div>
-                                <div id="GDPPerCapita" class="accordion-body">
-                                    GDP Per Capita
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingSix">
-                            <button
-                                class="accordion-button collapsed"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#collapseSix"
-                                aria-expanded="false"
-                                aria-controls="collapseSix"
-                            >
-                                Education <span>👩🏽‍💼</span>
-                            </button>
-                        </h2>
-                        <div
-                            id="collapseSix"
-                            class="accordion-collapse collapse"
-                            aria-labelledby="headingSix"
-                            data-bs-parent="#accordionExample"
-                        >
-                            <div class="accordion-body">
-                                <div id="bestUniversity" class="accordion-body">
-                                    BEST UNIVERSITY Placeholder
-                                </div>
-                                <div
-                                    id="bestUniversityRank"
-                                    class="accordion-body"
-                                >
-                                    BEST UNIVERSITY RANK Placeholder
-                                </div>
-                                <div id="pisaRanking" class="accordion-body">
-                                    PISA RANKING Placeholder
-                                </div>
-                                <div
-                                    id="pisaRankingTelescore"
-                                    class="accordion-body"
-                                >
-                                    PISA RANKING TELESCORE Placeholder
-                                </div>
-                                <div
-                                    id="studentHappiness"
-                                    class="accordion-body"
-                                >
-                                    STUDENT HAPPINESS Placeholder
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingSeven">
-                            <button
-                                class="accordion-button collapsed"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#collapseSeven"
-                                aria-expanded="false"
-                                aria-controls="collapseSeven"
-                            >
-                                Health Care <span>👩🏽‍💼</span>
-                            </button>
-                        </h2>
-                        <div
-                            id="collapseSeven"
-                            class="accordion-collapse collapse"
-                            aria-labelledby="headingSeven"
-                            data-bs-parent="#accordionExample"
-                        >
-                            <div class="accordion-body">
-                                <div id="Cost" class="accordion-body">
-                                    Cost PLACEHOLDER
-                                </div>
-                                <div id="Quality" class="accordion-body">
-                                    Quality Placeholder
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingEight">
-                            <button
-                                class="accordion-button collapsed"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#collapseEight"
-                                aria-expanded="false"
-                                aria-controls="collapseEight"
-                            >
-                                Pollution <span>👩🏽‍💼</span>
-                            </button>
-                        </h2>
-                        <div
-                            id="collapseEight"
-                            class="accordion-collapse collapse"
-                            aria-labelledby="headingEight"
-                            data-bs-parent="#accordionExample"
-                        >
-                            <div class="accordion-body">
-                                <div id="airPollution" class="accordion-body">
-                                    AIR POLLUTION Placeholder
-                                </div>
-                                <div id="cleanliness" class="accordion-body">
-                                    CLEANLINESS Placeholder
-                                </div>
-                                <div id="waterQuality" class="accordion-body">
-                                    WATER QUALITY Placeholder
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingNine">
-                            <button
-                                class="accordion-button collapsed"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#collapseNine"
-                                aria-expanded="false"
-                                aria-controls="collapseNine"
-                            >
-                                Safety <span>👩🏽‍💼</span>
-                            </button>
-                        </h2>
-                        <div
-                            id="collapseNine"
-                            class="accordion-collapse collapse"
-                            aria-labelledby="headingNi"
-                            data-bs-parent="#accordionExample"
-                        >
-                            <div class="accordion-body">
-                                <div id="crimeRate" class="accordion-body">
-                                    Crime Rate PLACEHOLDER
-                                </div>
-                                <div id="gunDeathScore" class="accordion-body">
-                                    Gun Death Score PLACEHOLDER
-                                </div>
-                                <div
-                                    id="gunOwnerShipScore"
-                                    class="accordion-body"
-                                >
-                                    Gun OwnerShip Score PLACEHOLDER
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingTen">
-                            <button
-                                class="accordion-button collapsed"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#collapseTen"
-                                aria-expanded="false"
-                                aria-controls="collapseTen"
-                            >
-                                Taxation <span>👩🏽‍💼</span>
-                            </button>
-                        </h2>
-                        <div
-                            id="collapseTen"
-                            class="accordion-collapse collapse"
-                            aria-labelledby="headingTen"
-                            data-bs-parent="#accordionExample"
-                        >
-                            <div class="accordion-body">
-                                <div id="incomeTax" class="accordion-body">
-                                    INCOME TAX Placeholder
-                                </div>
-                                <div id="salesTax" class="accordion-body">
-                                    SALES TAX Placeholder
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+  <!-- The background video -->
+  <!-- unmute to add audio -->
+  <video autoplay muted loop id="myVideo">
+    <source src="34.mp4" type="video/mp4" />
+  </video>
+  <body>
+    <!-- HEADER -->
 
-                    <!-- END -->
-                    <!-- END -->
-                    <!-- END -->
-                    <!-- END -->
-                    <!-- END -->
+    <header>
+      <h1>Ayo Dawg</h1>
+      <!-- Button trigger modal -->
+      <button
+        id="modalBtn"
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        Meet the Team
+      </button>
+    </header>
+    <!-- MAIN -->
+    <main class="row">
+      <!-- END video -->
+      
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">
+                About Us
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">Yo Mama</div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="col-12 col-lg-4" id="searchSection">
+        <div id="stateErrorContainer">
+          <em id="stateError" class="text-light"
+            >Enter an Urban Area to retrieve it's statistics!</em
+          >
+        </div>
+        <form autocomplete="off" action="/action_page.php">
+          <div class="autocomplete" style="width: 300px">
+            <input
+              id="myInput"
+              type="text"
+              name="urbanArea"
+              placeholder="Urban Area"
+            />
+          </div>
+          <button id="submitBtn" type="button" class="btn btn-primary">
+            Submit
+          </button>
+        </form>
+      </section>
+      <section class="col-8" id="displaySection">
+        <container>
+          <h1 id="urbanAreaName"></h1>
+          <h3>Area Qualities</h3>
+        </container>
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne"
+              >
+                Business Freedom <span>👩🏽‍💼</span>
+              </button>
+            </h2>
+            <div
+              id="collapseOne"
+              class="accordion-collapse collapse show"
+              aria-labelledby="headingOne"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                <div id="businessFreedom" class="accordion-body">
+                  BUSFREEDOM PLACEHOLDER
                 </div>
-            </section>
-        </main>
-    </body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="./assets/script.js"></script>
+                <div id="corruptionFreedom" class="accordion-body">
+                  CORFREEDOM PLACEHOLDER
+                </div>
+                <div id="laborRestrictions" class="accordion-body">
+                  LABORRESTRICTIONS PLACEHOLDER
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseTwo"
+                aria-expanded="false"
+                aria-controls="collapseTwo"
+              >
+                City Size <span>👩🏽‍💼</span>
+              </button>
+            </h2>
+            <div
+              id="collapseTwo"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingTwo"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                <div id="cityCenterPopulationDensity" class="accordion-body">
+                  CITY CENTER POP DENSITY PLACEHOLDER
+                </div>
+                <div id="UAPopulationDensity" class="accordion-body">
+                  UA POPULATION DENSITY PLACEHOLDER
+                </div>
+                <div id="UAPopulationSize" class="accordion-body">
+                  UA POPULATION SIZE PLACEHOLDER
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseThree"
+                aria-expanded="false"
+                aria-controls="collapseThree"
+              >
+                Cost of Housing <span>👩🏽‍💼</span>
+              </button>
+            </h2>
+            <div
+              id="collapseThree"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingThree"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                <div id="apartmentRentForLargeApartment" class="accordion-body">
+                  APARTMENT RENT FOR LARGE APARTMENT PLACEHOLDER
+                </div>
+                <div
+                  id="apartmentRentForMediumApartment"
+                  class="accordion-body"
+                >
+                  APARTMENT RENT FOR MEDIUM APARTMENT PLACEHOLDER
+                </div>
+                <div id="apartmentRentForSmallApartment" class="accordion-body">
+                  APARTMENT RENT FOR SMALL APARTMENT PLACEHOLDER
+                </div>
+                <div id="rentIndexTelescore" class="accordion-body">
+                  RENT INDEX TELESCORE PLACEHOLDER
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFour">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseFour"
+                aria-expanded="false"
+                aria-controls="collapseFour"
+              >
+                Cost of Living <span>👩🏽‍💼</span>
+              </button>
+            </h2>
+            <div
+              id="collapseFour"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingFour"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                <div id="consumerPriceIndex" class="accordion-body">
+                  Consumer Price Index Placeholder
+                </div>
+                <div id="costOfPublicTransport" class="accordion-body">
+                  Cost of Public Transport Placeholder
+                </div>
+                <div id="costOfRestaurantMeal" class="accordion-body">
+                  Cost of Restaurant Meal Placeholder
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFive">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseFive"
+                aria-expanded="false"
+                aria-controls="collapseFive"
+              >
+                Economy <span>👩🏽‍💼</span>
+              </button>
+            </h2>
+            <div
+              id="collapseFive"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingFive"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                <div id="GDPGrowthRate" class="accordion-body">
+                  GDP Growth Rate
+                </div>
+                <div id="GDPPerCapita" class="accordion-body">
+                  GDP Per Capita
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSix">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseSix"
+                aria-expanded="false"
+                aria-controls="collapseSix"
+              >
+                Education <span>👩🏽‍💼</span>
+              </button>
+            </h2>
+            <div
+              id="collapseSix"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingSix"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                <div id="bestUniversity" class="accordion-body">
+                  BEST UNIVERSITY Placeholder
+                </div>
+                <div id="bestUniversityRank" class="accordion-body">
+                  BEST UNIVERSITY RANK Placeholder
+                </div>
+                <div id="pisaRanking" class="accordion-body">
+                  PISA RANKING Placeholder
+                </div>
+                <div id="pisaRankingTelescore" class="accordion-body">
+                  PISA RANKING TELESCORE Placeholder
+                </div>
+                <div id="studentHappiness" class="accordion-body">
+                  STUDENT HAPPINESS Placeholder
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSeven">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseSeven"
+                aria-expanded="false"
+                aria-controls="collapseSeven"
+              >
+                Health Care <span>👩🏽‍💼</span>
+              </button>
+            </h2>
+            <div
+              id="collapseSeven"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingSeven"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                <div id="Cost" class="accordion-body">Cost PLACEHOLDER</div>
+                <div id="Quality" class="accordion-body">
+                  Quality Placeholder
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingEight">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseEight"
+                aria-expanded="false"
+                aria-controls="collapseEight"
+              >
+                Pollution <span>👩🏽‍💼</span>
+              </button>
+            </h2>
+            <div
+              id="collapseEight"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingEight"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                <div id="airPollution" class="accordion-body">
+                  AIR POLLUTION Placeholder
+                </div>
+                <div id="cleanliness" class="accordion-body">
+                  CLEANLINESS Placeholder
+                </div>
+                <div id="waterQuality" class="accordion-body">
+                  WATER QUALITY Placeholder
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingNine">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseNine"
+                aria-expanded="false"
+                aria-controls="collapseNine"
+              >
+                Safety <span>👩🏽‍💼</span>
+              </button>
+            </h2>
+            <div
+              id="collapseNine"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingNi"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                <div id="crimeRate" class="accordion-body">
+                  Crime Rate PLACEHOLDER
+                </div>
+                <div id="gunDeathScore" class="accordion-body">
+                  Gun Death Score PLACEHOLDER
+                </div>
+                <div id="gunOwnerShipScore" class="accordion-body">
+                  Gun OwnerShip Score PLACEHOLDER
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTen">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseTen"
+                aria-expanded="false"
+                aria-controls="collapseTen"
+              >
+                Taxation <span>👩🏽‍💼</span>
+              </button>
+            </h2>
+            <div
+              id="collapseTen"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingTen"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                <div id="incomeTax" class="accordion-body">
+                  INCOME TAX Placeholder
+                </div>
+                <div id="salesTax" class="accordion-body">
+                  SALES TAX Placeholder
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- END -->
+          <!-- END -->
+          <!-- END -->
+          <!-- END -->
+          <!-- END -->
+        </div>
+      </section>
+    </main>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="./assets/script.js"></script>
 </html>
