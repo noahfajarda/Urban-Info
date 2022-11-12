@@ -619,15 +619,15 @@ var i = 0;
 var audioMarkers = {};
 
 // if adding new mp3 files to 'music' folder, add the name of the file to 'musicFiles' array
-var musicFiles = ["logic-indica", "wolftyla-allTinted"];
+var musicFiles = ["logic-indica", "wolftyla-allTinted", "gambino-bonfire"];
 for (var i = 0; i < musicFiles.length; i++) {
     audioMarkers[musicFiles[i]] = [
         false,
         new Audio(`./assets/music/${musicFiles[i]}.mp3`),
     ];
 }
-i = 0;
 
+i = 0;
 for (var [key, value] of Object.entries(audioMarkers)) {
     console.log(key, value);
     $("#music1").append(
