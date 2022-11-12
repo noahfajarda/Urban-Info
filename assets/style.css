@@ -2,6 +2,15 @@
 * {
     box-sizing: border-box;
 }
+
+:root {
+    --one: rgb(70, 30, 82);
+    --two: rgb(221, 81, 127);
+    --three: rgb(85, 49, 193); 
+    --four: rgb(160, 185, 206); 
+    --five: rgb(185, 70, 179);
+}
+
 /* body */
 body {
     font: 16px Arial;
@@ -18,7 +27,7 @@ header {
     justify-content: center;
     align-items: center;
     margin: 0;
-    background-color: #00c2cb;
+    background-color: var(--one);
 }
 header h1 {
     position: absolute;
@@ -53,6 +62,8 @@ input {
     background-color: #f1f1f1;
     padding: 10px;
     font-size: 16px;
+    border-radius: 15px;
+    margin-bottom: 20px;
 }
 input[type="text"] {
     background-color: #f1f1f1;
@@ -149,11 +160,23 @@ span {
 }
 
 .accordion-collapse {
-    background-color: rgb(0, 255, 251, 0.3);
+    background-color: rgba(255, 0, 0, 0.3);
+    color: darkslateblue;
+    font-weight: bold;
 }
 
 .accordion-button.collapsed {
-    background-color: rgba(255, 0, 0, 0.3);
+    background-color: rgba(103, 4, 134, 0.736);
+}
+
+.accordionCatText  {
+    color:#00c2cb;
+    font-weight: bolder;
+    margin-bottom: 0px;
+}
+.uaSubCat {
+    color:#ee4b2b;
+    font-weight: bold;
 }
 
 #modalBtn {
@@ -191,6 +214,10 @@ container {
     color: white;
     text-align: center;
     padding-top: 10px;
+}
+#clearBtn {
+    display: none;
+    justify-content: center;
 }
 
 /* key frames */
