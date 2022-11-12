@@ -166,6 +166,10 @@ span {
     z-index: -2;
 }
 
+#urbanNameContainer {
+    color: white;
+}
+
 /* key frames */
 @keyframes animated-gradient {
     to {

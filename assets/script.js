@@ -549,7 +549,7 @@ function invalidUserInput() {
     $("#stateError").text(
         "There was an error retrieving data. Please check your entry for possible misspellings."
     );
-    $("#stateError").removeClass("text-dark").addClass("text-danger");
+    $("#stateError").removeClass("text-light").addClass("text-danger");
     var timeInterval = setInterval(function () {
         timeLeft--;
         if (timeLeft === -1) {
@@ -557,7 +557,7 @@ function invalidUserInput() {
             $("#stateError").text(
                 "Enter an Urban Area to retrieve it's statistics!"
             );
-            $("#stateError").removeClass("text-danger").addClass("text-dark");
+            $("#stateError").removeClass("text-danger").addClass("text-light");
         }
         return;
     }, 1000);
