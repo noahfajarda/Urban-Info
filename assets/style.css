@@ -6,8 +6,8 @@
 :root {
     --one: rgb(70, 30, 82);
     --two: rgb(221, 81, 127);
-    --three: rgb(85, 49, 193); 
-    --four: rgb(160, 185, 206); 
+    --three: rgb(85, 49, 193);
+    --four: rgb(160, 185, 206);
     --five: rgb(185, 70, 179);
 }
 
@@ -50,7 +50,7 @@ header h1 {
     background-position: -200%;
     animation: animated-gradient 5s infinite alternate-reverse;
 
-    -webkit-text-stroke: 1px black; /* width and color */
+    -webkit-text-stroke: 1px white; /* width and color */
 }
 /* main */
 main {
@@ -169,13 +169,13 @@ span {
     background-color: rgba(103, 4, 134, 0.736);
 }
 
-.accordionCatText  {
-    color:#00c2cb;
+.accordionCatText {
+    color: #00c2cb;
     font-weight: bolder;
     margin-bottom: 0px;
 }
 .uaSubCat {
-    color:#ee4b2b;
+    color: #ee4b2b;
     font-weight: bold;
 }
 
