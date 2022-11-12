@@ -4,7 +4,7 @@
 }
 
 :root {
-    --one: rgb(70, 30, 82);
+    --one: rgb(70, 30, 82, 0.7);
     --two: rgb(221, 81, 127);
     --three: rgb(85, 49, 193);
     --four: rgb(160, 185, 206);
@@ -171,6 +171,18 @@ span {
     background-color: rgba(103, 4, 134, 0.736);
 }
 
+/* transparency & color for accordion  */
+/* remove later if unwanted */
+.accordion {
+    /* --bs-accordion-bg: none; */
+    /* --bs-accordion-active-bg: white; */
+}
+
+.accordion-body {
+    /* color: white; */
+    /* font-size: 30px; */
+}
+
 .accordionCatText {
     color: #00c2cb;
     font-weight: bolder;
@@ -195,6 +207,7 @@ span {
     position: absolute;
     top: 20px;
     left: 30px;
+    /* border-color: white; */
 }
 
 .audioBtn {
@@ -218,9 +231,20 @@ span {
 
 .musicHeader {
     display: inline;
+    padding-left: 30px;
+    padding-right: 100px;
 }
 .accordion-button.collapsed::after {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+#speakerImg {
+    display: none;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 20px;
+    left: 160px;
 }
 
 #volume {
@@ -290,3 +314,14 @@ container {
 }
 
 /* media querries */
+@media screen and (max-width: 910px) {
+    #urbanAreaName {
+        font-size: 7vw;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    #urbanAreaName {
+        font-size: 6vw;
+    }
+}

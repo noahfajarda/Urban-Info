@@ -615,26 +615,61 @@ function callCity(search) {
 // AUDIO TESTING
 // AUDIO TESTING
 const audio = new Audio("./assets/music/logic-indica.mp3");
-const buttons = document.querySelectorAll(".audioBtn");
+const speakerIcon = $("#speakerImg");
 var i = 0;
+
+var audioMarkers = {};
+// add the file from the 'music' folder into this array to generate buttons dynamically
+var musicFiles = ["logic-indica", "wolftyla-allTinted"];
+for (var i = 0; i < musicFiles.length; i++) {
+    audioMarkers[musicFiles[i]] = [
+        false,
+        new Audio(`./assets/music/${musicFiles[i]}.mp3`),
+    ];
+}
+console.log(audioMarkers);
+i = 0;
+
+for (var [key, value] of Object.entries(audioMarkers)) {
+    console.log(key, value);
+    $("#music1").append(
+        `<p class='musicHeader'>Background Music #${i + 1}</p>`
+    );
+    $("#music1").append(`<button class='audioBtn' id='${key}'>Play</button>`);
+    $("#music1").append(`<hr>`);
+    i++;
+
+    var musicBtn = document.querySelector("#" + key);
+}
+
+const buttons = document.querySelectorAll(".audioBtn");
+
+var volume = document.querySelector("#volume");
 
 buttons.forEach((button) => {
     button.addEventListener("click", () => {
-        if (i == 0) {
-            audio.play();
-            audio.loop = true;
-            button.textContent = "Pause";
-            i = 1;
-        } else if (i == 1) {
-            audio.pause();
-            button.textContent = "Play";
-            i = 0;
+        for (var i = 0; i < musicFiles.length; i++) {
+            if (musicFiles[i] == button.id) {
+                if (audioMarkers[button.id][0] == false) {
+                    audioMarkers[button.id][1].play();
+                    audioMarkers[button.id][0] = true;
+                    audioMarkers[button.id][1].loop = true;
+                    button.textContent = "Pause";
+                    speakerIcon.css("display", "block");
+                } else if (audioMarkers[button.id][0] == true) {
+                    audioMarkers[button.id][1].pause();
+                    audioMarkers[button.id][0] = false;
+                    button.textContent = "Play";
+                    speakerIcon.css("display", "none");
+                }
+            }
         }
     });
-});
 
-var volume = document.querySelector("#volume");
-// update the volume when the slider is moved
-volume.addEventListener("input", (e) => {
-    audio.volume = e.currentTarget.value / 100;
+    // update the volume when the slider is moved
+    volume.addEventListener("input", (e) => {
+        for (var i = 0; i < musicFiles.length; i++) {
+            audioMarkers[button.id][1].volume = e.currentTarget.value / 100;
+        }
+    });
 });
