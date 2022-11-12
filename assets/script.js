@@ -614,12 +614,11 @@ function callCity(search) {
 // AUDIO TESTING
 // AUDIO TESTING
 // AUDIO TESTING
-const audio = new Audio("./assets/music/logic-indica.mp3");
 const speakerIcon = $("#speakerImg");
 var i = 0;
-
 var audioMarkers = {};
-// add the file from the 'music' folder into this array to generate buttons dynamically
+
+// if adding new mp3 files to 'music' folder, add the name of the file to 'musicFiles' array
 var musicFiles = ["logic-indica", "wolftyla-allTinted"];
 for (var i = 0; i < musicFiles.length; i++) {
     audioMarkers[musicFiles[i]] = [
@@ -627,7 +626,6 @@ for (var i = 0; i < musicFiles.length; i++) {
         new Audio(`./assets/music/${musicFiles[i]}.mp3`),
     ];
 }
-console.log(audioMarkers);
 i = 0;
 
 for (var [key, value] of Object.entries(audioMarkers)) {
@@ -643,7 +641,6 @@ for (var [key, value] of Object.entries(audioMarkers)) {
 }
 
 const buttons = document.querySelectorAll(".audioBtn");
-
 var volume = document.querySelector("#volume");
 
 buttons.forEach((button) => {
