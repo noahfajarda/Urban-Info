@@ -135,6 +135,13 @@ span {
     margin-bottom: 20px;
 }
 
+#searchSection {
+    border-style: double;
+    border-radius: 20px;
+    border-color: red;
+    padding-top: 20px;
+}
+
 /* key frames */
 @keyframes animated-gradient {
     to {

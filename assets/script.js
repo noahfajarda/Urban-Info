@@ -36,7 +36,9 @@ userInput.on("keyup", function (event) {
     if (event.key === "Enter" && event.target.value !== "") {
         // search for urban area upon enter
         searchUrbanAreas(event.target.value);
-        addUrbanButton(event.target.value);
+        if (urbanAreas.includes(event.target.value)) {
+            addUrbanButton(event.target.value);
+        }
         event.target.value = "";
     }
 });
