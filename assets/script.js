@@ -545,7 +545,7 @@ function retrieveCategoryData(data) {
 
 // user input error handling
 function invalidUserInput() {
-    var timeLeft = 1;
+    var timeLeft = 2;
     $("#stateError").text(
         "There was an error retrieving data. Please check your entry for possible misspellings."
     );

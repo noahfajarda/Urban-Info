@@ -140,11 +140,30 @@ span {
     border-radius: 20px;
     border-color: red;
     padding-top: 20px;
+    background-color: rgba(17, 0, 255, 0.3);
 }
 
 #stateErrorContainer {
     height: 45px;
     text-align: center;
+}
+
+.accordion-collapse {
+    background-color: rgb(0, 255, 251, 0.3);
+}
+
+.accordion-button.collapsed {
+    background-color: rgba(255, 0, 0, 0.3);
+}
+
+/* Style the video: 100% width and height to cover the entire window */
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -2;
 }
 
 /* key frames */
