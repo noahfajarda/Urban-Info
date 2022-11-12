@@ -89,6 +89,7 @@ button.urbanArea {
 }
 
 button.urbanArea:hover {
+    color: black;
     background-color: rgb(197, 236, 42);
     font-size: 22px;
     transform: translateY(-5px);
