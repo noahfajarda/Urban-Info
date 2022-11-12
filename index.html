@@ -65,11 +65,69 @@
                 Meet the Team
             </button>
             <!-- Button trigger modal END -->
+            <!-- TESTING Button trigger modal -->
+            <button
+                id="modalMusicBtn"
+                type="button"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#musicModal"
+            >
+                Toggle Music
+            </button>
+            <!-- TESTING Button trigger modal END -->
         </header>
         <!-- MAIN -->
         <main class="row">
             <!-- END video -->
 
+            <!-- Modal -->
+            <div
+                class="modal fade"
+                id="musicModal"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+            >
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                Toggle Music
+                            </h1>
+                            <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                            ></button>
+                        </div>
+
+                        <div class="musicSection">
+                            <!-- volume -->
+                            <section id="volumeContainer">
+                                Volume:
+                                <input type="range" id="volume" value="100" />
+                            </section>
+                            <section id="music1">
+                                <p class="musicHeader">Background Music #1</p>
+                                <button class="audioBtn">Play</button>
+                            </section>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                            >
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- modal END -->
             <!-- Modal -->
             <div
                 class="modal fade"

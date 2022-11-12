@@ -92,7 +92,6 @@ function createUrbanButtonsLocal(history) {
             addUrbanButton(history[i]);
         }
         $("#clearBtn").css("display", "inline");
-        
     }
 }
 createUrbanButtonsLocal(localStorage.getItem("Urban Area History"));
@@ -232,16 +231,14 @@ var dataMap = [
     },
 ];
 
-function clearHistory () {
+function clearHistory() {
     urbanAreasHistory = [];
     localStorage.setItem(
         "Urban Area History",
         JSON.stringify(urbanAreasHistory)
     );
     $(".urbanArea").remove();
-$("#clearBtn").css("display", "none");
-
-
+    $("#clearBtn").css("display", "none");
 }
 $("#clearBtn").on("click", clearHistory);
 
@@ -276,11 +273,9 @@ function searchUrbanAreas(urbanArea) {
                 data.selector.text(data.value);
             }
         });
-    
-    
-        $("#clearBtn").css("display", "inline");
-}
 
+    $("#clearBtn").css("display", "inline");
+}
 
 // retrieves all salaries from all occupations of urban area
 function retrieveSalaries(data) {
@@ -604,3 +599,34 @@ function urbanAreasList() {
 function callCity(search) {
     return fetch(`https://api.teleport.org/api/cities/?search=${search}`);
 }
+
+// AUDIO TESTING
+// AUDIO TESTING
+// AUDIO TESTING
+// AUDIO TESTING
+// AUDIO TESTING
+// AUDIO TESTING
+const audio = new Audio("./assets/music/logic-indica.mp3");
+const buttons = document.querySelectorAll(".audioBtn");
+var i = 0;
+
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        if (i == 0) {
+            audio.play();
+            audio.loop = true;
+            button.textContent = "Pause";
+            i = 1;
+        } else if (i == 1) {
+            audio.pause();
+            button.textContent = "Play";
+            i = 0;
+        }
+    });
+});
+
+var volume = document.querySelector("#volume");
+// update the volume when the slider is moved
+volume.addEventListener("input", (e) => {
+    audio.volume = e.currentTarget.value / 100;
+});
