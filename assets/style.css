@@ -142,6 +142,11 @@ span {
     padding-top: 20px;
 }
 
+#stateErrorContainer {
+    height: 45px;
+    text-align: center;
+}
+
 /* key frames */
 @keyframes animated-gradient {
     to {

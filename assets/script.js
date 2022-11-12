@@ -38,6 +38,8 @@ userInput.on("keyup", function (event) {
         searchUrbanAreas(event.target.value);
         if (urbanAreas.includes(event.target.value)) {
             addUrbanButton(event.target.value);
+        } else {
+            invalidUserInput();
         }
         event.target.value = "";
     }
@@ -50,6 +52,8 @@ submitBtn.on("click", function (event) {
     searchUrbanAreas(userInput);
     if (urbanAreas.includes(userInput)) {
         addUrbanButton(userInput);
+    } else {
+        invalidUserInput();
     }
     document.getElementById("myInput").value = "";
 });
@@ -537,6 +541,26 @@ function retrieveCategoryData(data) {
         },
     ];
     return areaQualitiesMapped;
+}
+
+// user input error handling
+function invalidUserInput() {
+    var timeLeft = 1;
+    $("#stateError").text(
+        "There was an error retrieving data. Please check your entry for possible misspellings."
+    );
+    $("#stateError").removeClass("text-dark").addClass("text-danger");
+    var timeInterval = setInterval(function () {
+        timeLeft--;
+        if (timeLeft === -1) {
+            clearInterval(timeInterval);
+            $("#stateError").text(
+                "Enter an Urban Area to retrieve it's statistics!"
+            );
+            $("#stateError").removeClass("text-danger").addClass("text-dark");
+        }
+        return;
+    }, 1000);
 }
 
 // shortcuts to urban data, urban salaries, list of all urban areas, city fetch apis
