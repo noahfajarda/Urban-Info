@@ -244,6 +244,8 @@ function searchUrbanAreas(urbanArea) {
             // all data we need
             var areaQualities = retrieveCategoryData(data);
             console.log("Area Qualities:", areaQualities);
+            console.log(data);
+
             // structure of Area Qualities array:
             // [{"Category": {"SubCategory": "", "SubCategory": "", ...}},
             // {"Category": {"SubCategory": "", "SubCategory": "", ...}},
