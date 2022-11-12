@@ -166,8 +166,25 @@ span {
     z-index: -2;
 }
 
-#urbanNameContainer {
+/* #urbanAreaName {
+    background-color: white;
+    z-index: 2;
+    border-radius: 20px;
+    padding: 20px;
     color: white;
+}
+
+h3 {
+    color: white;
+    z-index: 2;
+    border-radius: 20px;
+    padding: 20px;
+} */
+container {
+    border-radius: 20px;
+    color: white;
+    text-align: center;
+    padding-top: 10px;
 }
 
 /* key frames */
