@@ -619,7 +619,12 @@ var i = 0;
 var audioMarkers = {};
 
 // if adding new mp3 files to 'music' folder, add the name of the file to 'musicFiles' array
-var musicFiles = ["logic-indica", "wolftyla-allTinted", "gambino-bonfire"];
+var musicFiles = [
+    "logic-indica",
+    "wolftyla-allTinted",
+    "gambino-bonfire",
+    "steveLacy-badHabitRemixLOL",
+];
 for (var i = 0; i < musicFiles.length; i++) {
     audioMarkers[musicFiles[i]] = [
         false,

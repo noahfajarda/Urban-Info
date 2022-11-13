@@ -254,6 +254,7 @@ span {
 }
 
 #volumeContainer {
+    text-align: center;
     padding: 10px;
     padding-bottom: 15px;
 }
