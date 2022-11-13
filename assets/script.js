@@ -273,7 +273,7 @@ function searchUrbanAreas(urbanArea) {
 
             // display urban name
             // var areaVal =
-            $("#urbanAreaName").text(urbanArea);
+            $("#urbanAreaName").text(urbanArea.replaceAll("-", " "));
 
             // IF using an array
             for (var i = 0; i < areaQualities.length; i++) {
