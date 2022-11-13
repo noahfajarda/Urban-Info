@@ -622,12 +622,18 @@ var audioMarkers = {};
 var musicFiles = [
     "LOGIC-Indica-Badu",
     "BRENT-FAIYAZ-Too-Fast",
+    "JHENE-AIKO-Tryna-Smoke",
     "WOLFTYLA-All-Tinted",
     "CHILDISH-GAMBINO-Bonfire",
     "STEVE-LACY-Bad-Habit-Remix-LOL",
     "BOBBY-DARIN-Beyond-The-Sea",
     "ABC-Be-Near-Me",
 ];
+// add a nested object with each key having the values [isPlaying, mp3_file_path]
+// data structure format:
+// audioMarkers = {
+//     "music file name": [isPlaying, mp3_file_path]
+// }
 for (var i = 0; i < musicFiles.length; i++) {
     audioMarkers[musicFiles[i]] = [
         false,
@@ -635,11 +641,15 @@ for (var i = 0; i < musicFiles.length; i++) {
     ];
 }
 
+// make 'i' global to display music # on page
 i = 0;
+// iterate through 'audioMarkers' object to retrieve key = "music file name"
 for (var [key, value] of Object.entries(audioMarkers)) {
+    // audio label
     $("#music1").append(
         `<p class='musicHeader'>Background Music #${i + 1}</p>`
     );
+    // add audio button setting "music file name" to ID of button
     $("#music1").append(
         `<button title="${key
             .split("-")
@@ -647,24 +657,32 @@ for (var [key, value] of Object.entries(audioMarkers)) {
     );
     $("#music1").append(`<hr>`);
     i++;
-
-    var musicBtn = document.querySelector("#" + key);
 }
 
+// select all buttons & volume slider
 const buttons = document.querySelectorAll(".audioBtn");
 var volume = document.querySelector("#volume");
 
+// give an event listener for each iterative button
 buttons.forEach((button) => {
     button.addEventListener("click", () => {
+        // when user clicks on any of the buttons, iterate through all music files
         for (var i = 0; i < musicFiles.length; i++) {
+            // see if the button id matches any one of the music files
             if (musicFiles[i] == button.id) {
+                // if so, check if the song is playing
                 if (audioMarkers[button.id][0] == false) {
+                    // if the song isn't playing, play the song on a loop
+                    // and idicate that the song is playing
                     audioMarkers[button.id][1].play();
                     audioMarkers[button.id][0] = true;
                     audioMarkers[button.id][1].loop = true;
+                    // change the text of that button and show the speaker icon
                     button.textContent = "Pause";
                     speakerIcon.css("display", "block");
                 } else if (audioMarkers[button.id][0] == true) {
+                    // if the song is playing, pause the song
+                    // and idicate that the song is not playing
                     audioMarkers[button.id][1].pause();
                     audioMarkers[button.id][0] = false;
                     button.textContent = "Play";
