@@ -171,7 +171,7 @@ span {
     background-color: rgba(103, 4, 134, 0.736);
 }
 
-/* transparency & color for accordion  */
+/* transparency & color for accordion upon click */
 /* remove later if unwanted */
 .accordion {
     /* --bs-accordion-bg: none; */
@@ -181,6 +181,22 @@ span {
 .accordion-body {
     /* color: white; */
     /* font-size: 30px; */
+}
+
+/* style modal */
+
+.modal-header {
+    /* font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; */
+    /* background: linear-gradient(135deg, hsl(300, 40%, 20%),hsl(300, 40%, 5%));
+    border-radius: 1.5rem;
+    box-shadow: 0 1rem 2rem #000a; */
+}
+.modal-body {
+    /* background-color: rgb(255, 0, 255); */
+    /* font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; */
+}
+.modal-footer {
+    /* font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; */
 }
 
 .accordionCatText {

@@ -620,10 +620,12 @@ var audioMarkers = {};
 
 // if adding new mp3 files to 'music' folder, add the name of the file to 'musicFiles' array
 var musicFiles = [
-    "logic-indica",
-    "wolftyla-allTinted",
-    "gambino-bonfire",
-    "steveLacy-badHabitRemixLOL",
+    "LOGIC-Indica-Badu",
+    "WOLFTYLA-All-Tinted",
+    "CHILDISH-GAMBINO-Bonfire",
+    "STEVE-LACY-Bad-Habit-Remix-LOL",
+    "BOBBY-DARIN-Beyond-The-Sea",
+    "ABC-Be-Near-Me",
 ];
 for (var i = 0; i < musicFiles.length; i++) {
     audioMarkers[musicFiles[i]] = [
@@ -634,11 +636,14 @@ for (var i = 0; i < musicFiles.length; i++) {
 
 i = 0;
 for (var [key, value] of Object.entries(audioMarkers)) {
-    console.log(key, value);
     $("#music1").append(
         `<p class='musicHeader'>Background Music #${i + 1}</p>`
     );
-    $("#music1").append(`<button class='audioBtn' id='${key}'>Play</button>`);
+    $("#music1").append(
+        `<button title="${key
+            .split("-")
+            .join(" ")}" class='audioBtn' id='${key}'>Play</button>`
+    );
     $("#music1").append(`<hr>`);
     i++;
 
