@@ -625,6 +625,7 @@ var musicFiles = [
     "JHENE-AIKO-Tryna-Smoke",
     "WOLFTYLA-All-Tinted",
     "CHILDISH-GAMBINO-Bonfire",
+    "CHILDISH-GAMBINO-This-Is-America",
     "STEVE-LACY-Bad-Habit-Remix-LOL",
     "BOBBY-DARIN-Beyond-The-Sea",
     "ABC-Be-Near-Me",
