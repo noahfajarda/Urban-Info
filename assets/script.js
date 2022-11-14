@@ -1,6 +1,13 @@
 // utility function to dynamically create and append elements
 // function can also accept ids & classes
-function createEl(element, innerHTML, id = "", classes = "", parent = "") {
+function createEl(
+    element,
+    innerHTML,
+    id = "",
+    classes = "",
+    parent = "",
+    prependAppend = ""
+) {
     var element = document.createElement(element);
     element.innerHTML = innerHTML;
     // add classes
@@ -22,7 +29,10 @@ function createEl(element, innerHTML, id = "", classes = "", parent = "") {
     // parent
     // console.log(parent);
     if (parent !== "") {
-        $(parent).append(element);
+        // prependAppend
+        if (prependAppend == "prepend") {
+            $(parent).prepend(element);
+        }
     } else {
         document.body.appendChild(element);
     }
@@ -64,8 +74,7 @@ function addUrbanButton(userInput) {
         // if UA doesn't exist
         syncLocalStorage(userInput);
         // prettier-ignore
-        createEl("button", userInput, (id = userInput.replaceAll(" ", "")), (classes = "urbanArea"), "#searchSection");
-        console.log("#" + userInput);
+        createEl("button", userInput, (id = userInput.replaceAll(" ", "")), (classes = "urbanArea"), "#urbanAreaButtonList", "prepend");
         $("#" + userInput.replaceAll(" ", "")).on("click", function () {
             searchUrbanAreas(userInput);
         });
@@ -92,14 +101,13 @@ function createUrbanButtonsLocal(history) {
             addUrbanButton(history[i]);
         }
         $("#clearBtn").css("display", "inline");
-        
     }
 }
 createUrbanButtonsLocal(localStorage.getItem("Urban Area History"));
 
 function retrieveAllUrbanAreas() {
     // prettier-ignore
-    var urbanAreas = ["Aarhus", "Adelaide", "Albuquerque", "Almaty", "Amsterdam", "Anchorage", "Ankara", "Asheville", "Asuncion", "Athens", "Atlanta", "Auckland", "Austin", "Baku", "Bali", "Bangkok", "Barcelona", "Beijing", "Beirut", "Belfast", "Belgrade", "Belize City", "Bengaluru", "Berlin", "Bern", "Birmingham", "Bogota", "Boise", "Bologna", "Bordeaux", "Boston", "Boulder", "Bozeman", "Bratislava", "Brisbane", "Bristol", "Brussels", "Bucharest", "Budapest", "Buenos Aires", "Buffalo", "Cairo", "Calgary", "Cambridge", "Cape Town", "Caracas", "Cardiff", "Casablanca", "Charleston", "Charlotte", "Chattanooga","Chennai", "Chiang Mai", "Chicago", "Chisinau", "Christchurch", "Cincinnati", "Cleveland", "Cluj-Napoca", "Cologne", "Colorado Springs", "Columbus", "Copenhagen", "Cork", "Curitiba", "Dallas", "Dar es Salaam", "Delhi", "Denver", "Des Moines", "Detroit", "Doha", "Dresden", "Dubai", "Dublin", "Dusseldorf", "Edinburgh", "Edmonton", "Eindhoven", "Eugene", "Florence", "Florianopolis", "Fort Collins", "Frankfurt", "Fukuoka", "Galway", "Gdansk", "Geneva", "Glasgow", "Gothenburg", "Grenoble", "Guadalajara", "Guatemala City", "Halifax", "Hamburg", "Hannover", "Havana", "Helsinki", "Ho Chi Minh City", "Hong Kong", "Honolulu", "Houston", "Hyderabad", "Indianapolis", "Innsbruck", "Istanbul", "Jacksonville", "Jakarta", "Johannesburg", "Kansas City", "Karlsruhe", "Kathmandu", "Kiev", "Kingston", "Knoxville", "Krakow", "Kuala Lumpur", "Lagos", "La Paz", "Las Palmas de Gran Canaria", "Las Vegas", "Lausanne", "Leipzig", "Lille", "Lima", "Lisbon", "Liverpool", "Ljubljana", "London", "Los Angeles", "Louisville", "Luxembourg", "Lviv", "Lyon", "Madison", "Madrid", "Malaga", "Malmo", "Managua", "Manchester", "Manila", "Marseille", "Medellin", "Melbourne", "Memphis", "Mexico City", "Miami", "Milan", "Milwaukee", "Minneapolis-Saint Paul", "Minsk", "Montevideo", "Montreal", "Moscow", "Mumbai", "Munich", "Nairobi", "Nantes", "Naples", "Nashville", "New Orleans", "New York", "Nice", "Nicosia", "Oklahoma City", "Omaha", "Orlando", "Osaka", "Oslo", "Ottawa", "Oulu", "Oxford", "Palo Alto", "Panama", "Paris", "Perth", "Philadelphia", "Phnom Penh", "Phoenix", "Phuket", "Pittsburgh", "Portland, ME", "Portland, OR", "Porto", "Porto Alegre", "Prague", "Providence", "Quito", "Raleigh", "Reykjavik", "Richmond", "Riga", "Rio De Janeiro", "Riyadh", "Rochester", "Rome", "Rotterdam", "Saint Petersburg", "Salt Lake City", "San Antonio", "San Diego", "San Francisco Bay Area", "San Jose", "San Juan", "San Luis Obispo", "San Salvador", "Santiago", "Santo Domingo", "Sao Paulo", "Sarajevo", "Saskatoon", "Seattle", "Seoul", "Seville", "Shanghai", "Singapore", "Skopje", "Sofia", "St. Louis", "Stockholm", "Stuttgart", "Sydney", "Taipei", "Tallinn", "Tampa Bay Area", "Tampere", "Tartu", "Tashkent", "Tbilisi", "Tehran", "Tel Aviv", "The Hague", "Thessaloniki", "Tokyo", "Toronto", "Toulouse", "Tunis", "Turin", "Turku", "Uppsala", "Utrecht", "Valencia", "Valletta", "Vancouver", "Victoria", "Vienna", "Vilnius", "Warsaw", "Washington, D.C.", "Wellington", "Winnipeg", "Wroclaw", "Yerevan", "Zagreb", "Zurich"];
+    var urbanAreas = ["Aarhus", "Adelaide", "Albuquerque", "Almaty", "Amsterdam", "Anchorage", "Ankara", "Asheville", "Asuncion", "Athens", "Atlanta", "Auckland", "Austin", "Baku", "Bali", "Bangkok", "Barcelona", "Beijing", "Beirut", "Belfast", "Belgrade", "Belize City", "Bengaluru", "Berlin", "Bern", "Birmingham", "Bogota", "Boise", "Bologna", "Bordeaux", "Boston", "Boulder", "Bozeman", "Bratislava", "Brisbane", "Bristol", "Brussels", "Bucharest", "Budapest", "Buenos Aires", "Buffalo", "Cairo", "Calgary", "Cambridge", "Cape Town", "Caracas", "Cardiff", "Casablanca", "Charleston", "Charlotte", "Chattanooga","Chennai", "Chiang Mai", "Chicago", "Chisinau", "Christchurch", "Cincinnati", "Cleveland", "Cluj-Napoca", "Cologne", "Colorado Springs", "Columbus", "Copenhagen", "Cork", "Curitiba", "Dallas", "Dar es Salaam", "Delhi", "Denver", "Des Moines", "Detroit", "Doha", "Dresden", "Dubai", "Dublin", "Dusseldorf", "Edinburgh", "Edmonton", "Eindhoven", "Eugene", "Florence", "Florianopolis", "Fort Collins", "Frankfurt", "Fukuoka", "Gdansk", "Geneva", "Glasgow", "Gothenburg", "Grenoble", "Guadalajara", "Guatemala City", "Halifax", "Hamburg", "Hannover", "Havana", "Helsinki", "Ho Chi Minh City", "Hong Kong", "Honolulu", "Houston", "Hyderabad", "Indianapolis", "Innsbruck", "Istanbul", "Jacksonville", "Jakarta", "Johannesburg", "Kansas City", "Karlsruhe", "Kathmandu", "Kiev", "Kingston", "Knoxville", "Krakow", "Kuala Lumpur", "Lagos", "La Paz", "Las Palmas de Gran Canaria", "Las Vegas", "Lausanne", "Leipzig", "Lille", "Lima", "Lisbon", "Liverpool", "Ljubljana", "London", "Los Angeles", "Louisville", "Luxembourg", "Lviv", "Lyon", "Madison", "Madrid", "Malaga", "Malmo", "Managua", "Manchester", "Manila", "Marseille", "Medellin", "Melbourne", "Memphis", "Mexico City", "Miami", "Milan", "Milwaukee", "Minneapolis-Saint Paul", "Minsk", "Montevideo", "Montreal", "Moscow", "Mumbai", "Munich", "Nairobi", "Nantes", "Naples", "Nashville", "New Orleans", "New York", "Nice", "Nicosia", "Oklahoma City", "Omaha", "Orlando", "Osaka", "Oslo", "Ottawa", "Oulu", "Oxford", "Palo Alto", "Panama", "Paris", "Perth", "Philadelphia", "Phnom Penh", "Phoenix", "Phuket", "Pittsburgh", "Portland, ME", "Portland, OR", "Porto", "Porto Alegre", "Prague", "Providence", "Quito", "Raleigh", "Reykjavik", "Richmond", "Riga", "Rio De Janeiro", "Riyadh", "Rochester", "Rome", "Rotterdam", "Saint Petersburg", "Salt Lake City", "San Antonio", "San Diego", "San Francisco Bay Area", "San Jose", "San Juan", "San Luis Obispo", "San Salvador", "Santiago", "Santo Domingo", "Sao Paulo", "Sarajevo", "Saskatoon", "Seattle", "Seoul", "Seville", "Shanghai", "Singapore", "Skopje", "Sofia", "St. Louis", "Stockholm", "Stuttgart", "Sydney", "Taipei", "Tallinn", "Tampa Bay Area", "Tampere", "Tartu", "Tashkent", "Tbilisi", "Tehran", "Tel Aviv", "The Hague", "Thessaloniki", "Tokyo", "Toronto", "Toulouse", "Tunis", "Turin", "Turku", "Uppsala", "Utrecht", "Valencia", "Valletta", "Vancouver", "Victoria", "Vienna", "Vilnius", "Warsaw", "Washington, D.C.", "Wellington", "Winnipeg", "Wroclaw", "Yerevan", "Zagreb", "Zurich"];
     return urbanAreas;
 }
 var urbanAreas = retrieveAllUrbanAreas();
@@ -232,16 +240,14 @@ var dataMap = [
     },
 ];
 
-function clearHistory () {
+function clearHistory() {
     urbanAreasHistory = [];
     localStorage.setItem(
         "Urban Area History",
         JSON.stringify(urbanAreasHistory)
     );
     $(".urbanArea").remove();
-$("#clearBtn").css("display", "none");
-
-
+    $("#clearBtn").css("display", "none");
 }
 $("#clearBtn").on("click", clearHistory);
 
@@ -252,7 +258,6 @@ function searchUrbanAreas(urbanArea) {
     }
 
     urbanArea = urbanArea.replaceAll(" ", "-");
-    console.log(urbanArea);
     urbanData(urbanArea)
         .then((response) => response.json())
         .then((data) => {
@@ -268,7 +273,7 @@ function searchUrbanAreas(urbanArea) {
 
             // display urban name
             // var areaVal =
-            $("#urbanAreaName").text(urbanArea);
+            $("#urbanAreaName").text(urbanArea.replaceAll("-", " "));
 
             // IF using an array
             for (var i = 0; i < areaQualities.length; i++) {
@@ -276,11 +281,9 @@ function searchUrbanAreas(urbanArea) {
                 data.selector.text(data.value);
             }
         });
-    
-    
-        $("#clearBtn").css("display", "inline");
-}
 
+    $("#clearBtn").css("display", "inline");
+}
 
 // retrieves all salaries from all occupations of urban area
 function retrieveSalaries(data) {
@@ -410,19 +413,19 @@ function retrieveCategoryData(data) {
         {
             //cost of housing
             selector: $("#apartmentRentForLargeApartment"),
-            value: `Apartment Rent for Large Apartment - ${
+            value: `Apartment Rent for Large Apartment - $${
                 categories[8].data[0]?.currency_dollar_value || "Unknown"
             }`,
         },
         {
             selector: $("#apartmentRentForMediumApartment"),
-            value: `Apartment Rent for Medium Apartment - ${
+            value: `Apartment Rent for Medium Apartment - $${
                 categories[8].data[1]?.currency_dollar_value || "Unknown"
             }`,
         },
         {
             selector: $("#apartmentRentForSmallApartment"),
-            value: `Apartment Rent for Small Apartment - ${
+            value: `Apartment Rent for Small Apartment - $${
                 categories[8].data[2]?.currency_dollar_value || "Unknown"
             }`,
         },
@@ -604,3 +607,96 @@ function urbanAreasList() {
 function callCity(search) {
     return fetch(`https://api.teleport.org/api/cities/?search=${search}`);
 }
+
+// AUDIO TESTING
+// AUDIO TESTING
+// AUDIO TESTING
+// AUDIO TESTING
+// AUDIO TESTING
+// AUDIO TESTING
+const speakerIcon = $("#speakerImg");
+var i = 0;
+var audioMarkers = {};
+
+// if adding new mp3 files to 'music' folder, add the name of the file to 'musicFiles' array
+var musicFiles = [
+    "LOGIC-Indica-Badu",
+    "BRENT-FAIYAZ-Too-Fast",
+    "JHENE-AIKO-Tryna-Smoke",
+    "WOLFTYLA-All-Tinted",
+    "CHILDISH-GAMBINO-Bonfire",
+    "CHILDISH-GAMBINO-This-Is-America",
+    "STEVE-LACY-Bad-Habit-Remix-LOL",
+    "BOBBY-DARIN-Beyond-The-Sea",
+    "ABC-Be-Near-Me",
+];
+// add a nested object with each key having the values [isPlaying, mp3_file_path]
+// data structure format:
+// audioMarkers = {
+//     "music file name": [isPlaying, mp3_file_path]
+// }
+for (var i = 0; i < musicFiles.length; i++) {
+    audioMarkers[musicFiles[i]] = [
+        false,
+        new Audio(`./assets/music/${musicFiles[i]}.mp3`),
+    ];
+}
+
+// make 'i' global to display music # on page
+i = 0;
+// iterate through 'audioMarkers' object to retrieve key = "music file name"
+for (var [key, value] of Object.entries(audioMarkers)) {
+    // audio label
+    $("#music1").append(
+        `<p class='musicHeader'>Background Music #${i + 1}</p>`
+    );
+    // add audio button setting "music file name" to ID of button
+    $("#music1").append(
+        `<button title="${key
+            .split("-")
+            .join(" ")}" class='audioBtn' id='${key}'>Play</button>`
+    );
+    $("#music1").append(`<hr>`);
+    i++;
+}
+
+// select all buttons & volume slider
+const buttons = document.querySelectorAll(".audioBtn");
+var volume = document.querySelector("#volume");
+
+// give an event listener for each iterative button
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        // when user clicks on any of the buttons, iterate through all music files
+        for (var i = 0; i < musicFiles.length; i++) {
+            // see if the button id matches any one of the music files
+            if (musicFiles[i] == button.id) {
+                // if so, check if the song is playing
+                if (audioMarkers[button.id][0] == false) {
+                    // if the song isn't playing, play the song on a loop
+                    // and idicate that the song is playing
+                    audioMarkers[button.id][1].play();
+                    audioMarkers[button.id][0] = true;
+                    audioMarkers[button.id][1].loop = true;
+                    // change the text of that button and show the speaker icon
+                    button.textContent = "Pause";
+                    speakerIcon.css("display", "block");
+                } else if (audioMarkers[button.id][0] == true) {
+                    // if the song is playing, pause the song
+                    // and idicate that the song is not playing
+                    audioMarkers[button.id][1].pause();
+                    audioMarkers[button.id][0] = false;
+                    button.textContent = "Play";
+                    speakerIcon.css("display", "none");
+                }
+            }
+        }
+    });
+
+    // update the volume when the slider is moved
+    volume.addEventListener("input", (e) => {
+        for (var i = 0; i < musicFiles.length; i++) {
+            audioMarkers[button.id][1].volume = e.currentTarget.value / 100;
+        }
+    });
+});

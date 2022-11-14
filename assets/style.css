@@ -4,7 +4,7 @@
 }
 
 :root {
-    --one: rgb(70, 30, 82);
+    --one: rgb(70, 30, 82, 0.7);
     --two: rgb(221, 81, 127);
     --three: rgb(85, 49, 193);
     --four: rgb(160, 185, 206);
@@ -30,10 +30,10 @@ header {
     background-color: var(--one);
 }
 header h1 {
+    font-size: 7vw;
     position: absolute;
     text-align: center;
     width: 90%;
-    font-size: 7vw;
     font-weight: 600;
     color: transparent;
     background-image: linear-gradient(
@@ -89,6 +89,7 @@ button.urbanArea {
 }
 
 button.urbanArea:hover {
+    color: black;
     background-color: rgb(197, 236, 42);
     font-size: 22px;
     transform: translateY(-5px);
@@ -105,6 +106,7 @@ span {
 /* display section */
 .row {
     justify-content: center;
+    margin: 0px;
 }
 
 /* classes */
@@ -169,20 +171,108 @@ span {
     background-color: rgba(103, 4, 134, 0.736);
 }
 
+/* transparency & color for accordion upon click */
+/* remove later if unwanted */
+.accordion {
+    /* --bs-accordion-bg: none; */
+    /* --bs-accordion-active-bg: white; */
+}
+
+.accordion-body {
+    /* color: white; */
+    /* font-size: 30px; */
+}
+
+/* style modal */
+
+.modal-header {
+    /* font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; */
+    /* background: linear-gradient(135deg, hsl(300, 40%, 20%),hsl(300, 40%, 5%));
+    border-radius: 1.5rem;
+    box-shadow: 0 1rem 2rem #000a; */
+}
+.modal-body {
+    /* background-color: rgb(255, 0, 255); */
+    /* font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; */
+}
+.modal-footer {
+    /* font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; */
+}
+
 .accordionCatText {
     color: #00c2cb;
     font-weight: bolder;
     margin-bottom: 0px;
+    font-size: 25px;
+    -webkit-text-stroke: 0.2px white; /* width and color */
 }
 .uaSubCat {
     color: #ee4b2b;
     font-weight: bold;
+    font-size: 40px;
+    text-align: center;
 }
 
 #modalBtn {
     position: absolute;
     top: 20px;
     right: 30px;
+}
+
+#modalMusicBtn {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    /* border-color: white; */
+}
+
+.audioBtn {
+    display: inline-block;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+    background: #034d85;
+    padding: 1.1rem 3.4rem;
+    border-radius: 0.9rem;
+    transition: opacity 0.2s;
+}
+.audioBtn:hover {
+    cursor: pointer;
+    background: #053056;
+}
+
+#music1 {
+    justify-content: end;
+}
+
+.musicHeader {
+    display: inline;
+    padding-left: 30px;
+    padding-right: 80px;
+}
+.accordion-button.collapsed::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+#speakerImg {
+    display: none;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 20px;
+    left: 160px;
+}
+
+#volume {
+    padding: 0px;
+    margin: 0px;
+    height: 10px;
+}
+
+#volumeContainer {
+    text-align: center;
+    padding: 10px;
+    padding-bottom: 15px;
 }
 
 /* Style the video: 100% width and height to cover the entire window */
@@ -195,20 +285,33 @@ span {
     z-index: -2;
 }
 
-/* #urbanAreaName {
+#UAcontainer {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#urbanAreaName {
+    font-size: 70px;
+    margin: 0px;
     background-color: white;
     z-index: 2;
     border-radius: 20px;
     padding: 20px;
     color: white;
-}
+    width: 90%;
+    font-weight: 600;
+    color: transparent;
+    background-image: linear-gradient(to right, white);
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-size: 200%;
+    background-position: -200%;
+    animation: animated-gradient 15s infinite;
 
-h3 {
-    color: white;
-    z-index: 2;
-    border-radius: 20px;
-    padding: 20px;
-} */
+    -webkit-text-stroke: 1px black; /* width and color */
+}
 container {
     border-radius: 20px;
     color: white;
@@ -228,3 +331,14 @@ container {
 }
 
 /* media querries */
+@media screen and (max-width: 910px) {
+    #urbanAreaName {
+        font-size: 7vw;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    #urbanAreaName {
+        font-size: 6vw;
+    }
+}

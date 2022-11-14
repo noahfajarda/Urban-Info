@@ -40,5 +40,3 @@ Showing appriciation to who you have taken code from and given insight one / Lik
 
 ## License
 This is currently no appicable. 
-
-
