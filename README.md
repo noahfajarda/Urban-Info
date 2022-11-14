@@ -5,19 +5,17 @@ This project was created to be interesting and intereative. Giving a full diplay
 
 ## Functionality
 
-On the top left of this website there will be a "Toggle Music" button that allows you to play a variety of background music while you search. A pop-up box will then appear displaying a volume slider letting you adjust the volume and select a variety of backgroung music that you would like to play.
-
-The top right of this website displays a "Meet the Team" button that will display each collaburators information for Github and Linken.  
+The top right of this website displays a "Meet the Team" button that will display each collaburators information for Github and LinkedIn.  
 
 This website works by typing in a name of a major urban area into the search bar. The seacrch bar offers auto-complete of urban area names depending on the letters inputed. 
 
-There is a history section under the search bar that will save your searches. It will save them even if you exit the page and comeback. 
+There is a history section under the search bar that will save your searches. It will save them even if you exit the page and come back. 
 
-You can simply click any of the recent searches done to switch between them without having to type them again. This feature does not save duplicate searchs. 
+You can simply click any of the recent searches done to view urban area data without time loss. This feature does not save duplicate searches. 
 
-If you would like to clear your history all you have to do is press the "Clear History" button. This will earase all the history that was gathered.
+If you would like to clear your history, all you have to do is press the "Clear History" button. This will erase all the urban area history that was gathered.
 
-After inputing or selecting a name of an urban area you will then be able to click on the area qualites that you would like further information on. 
+After inputing or selecting a name of an urban area, you will then be able to click on the area quality categories that you would like further information on. 
 
 A drop down effect will then display more detailed information and statistics of the qualites associated with the area that is chosen.
 
