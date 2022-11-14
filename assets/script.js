@@ -716,3 +716,10 @@ Array.from(document.getElementsByClassName('showmodal')).forEach( (e) => {
     let myModal = new bootstrap.Modal(mid);
     myModal.show();
   }
+
+//addEventListener specialSuprise
+
+$('#specialSurprise').on("click", function() {
+    console.log($('#specialVideo'));
+    $('#specialVideo').removeAttr("muted");
+})
