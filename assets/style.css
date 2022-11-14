@@ -207,6 +207,20 @@ span {
 
 } 
 */
+.catTitle {
+    color: red;
+    font-weight: bolder;
+}
+
+.subCatTitle {
+    color: blue;
+    font-weight: bold;
+}
+
+.legendText {
+    color: purple;
+}
+
 
 #footerButtons {
     display: flex;
