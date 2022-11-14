@@ -199,6 +199,22 @@ span {
     /* font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; */
 }
 
+/* .mttUl {
+
+}
+
+.mttLi {
+
+} 
+*/
+
+#footerButtons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
 .accordionCatText {
     color: #00c2cb;
     font-weight: bolder;
