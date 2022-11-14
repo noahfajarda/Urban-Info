@@ -42,9 +42,9 @@ If you would like assistance with this website or it breaks please feel free to 
 The direction for any future development on this project will be noted as the following: 
 
 - Including area images
-- Adding job salories and their statistics
+- Adding job salaries and their statistics
 - Having a side-by-side comparison of urban areas
-- Generaring charts based off the data information that is pulled from the api
+- Generating charts based off the data information that is pulled from the api
 
 ## List of Resources & Achknowledgements
 The follwing information will the a list of languages, apis, and sites that were used in creating this project.
