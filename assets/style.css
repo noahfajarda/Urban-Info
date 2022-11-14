@@ -251,7 +251,7 @@ span {
 .musicHeader {
     display: inline;
     padding-left: 30px;
-    padding-right: 77px;
+    padding-right: 69px;
     font-family: "Permanent Marker", cursive;
 }
 .accordion-button.collapsed::after {
