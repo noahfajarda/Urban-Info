@@ -702,24 +702,26 @@ buttons.forEach((button) => {
     });
 });
 
-Array.from(document.getElementsByClassName('showmodal')).forEach( (e) => {
-    e.addEventListener('click', function(element) {
-      element.preventDefault();
-      if (e.hasAttribute('data-show-modal')) {
-        showModal(e.getAttribute('data-show-modal'));
-      }
-    }); 
-  });
-  // Show modal dialog
-  function showModal(modal) {
+Array.from(document.getElementsByClassName("showmodal")).forEach((e) => {
+    e.addEventListener("click", function (element) {
+        element.preventDefault();
+        if (e.hasAttribute("data-show-modal")) {
+            showModal(e.getAttribute("data-show-modal"));
+        }
+    });
+});
+// Show modal dialog
+function showModal(modal) {
     const mid = document.getElementById(modal);
     let myModal = new bootstrap.Modal(mid);
     myModal.show();
-  }
+}
 
 //addEventListener specialSuprise
 
-$('#specialSurprise').on("click", function() {
-    console.log($('#specialVideo'));
-    $('#specialVideo').removeAttr("muted");
-})
+// $("specialVideo").prop("muted", true);
+$("#specialSurprise").on("click", function () {
+    var vid = document.getElementById("specialVideo");
+    vid.autoplay = true;
+    vid.muted = false;
+});
