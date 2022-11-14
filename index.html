@@ -127,14 +127,39 @@
               <section id="music1"></section>
             </div>
 
-                        <div class="modal-footer">
-                            <button
-                                type="button"
-                                class="btn btn-secondary"
-                                data-bs-dismiss="modal"
-                            >
-                                Close
-                            </button>
+                        <div class="modal-footer d-flex justify-content-between">
+                            
+                                <button type="button" class="btn btn-primary showmodal" data-show-modal="infoModal">
+                                    Special Suprise
+                                </button> 
+                                
+                                <button
+                                    type="button"
+                                    class="btn btn-secondary"
+                                    data-bs-dismiss="modal"
+                                >
+                                    Close
+                                </button>
+                            
+                            <div class="modal mt-5 ms-5" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true" data-bs-backdrop="static">
+                                <div class="modal-dialog modal-sm">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="infoModalLabel">Plz like, share, and subscribe</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <video autoplay muted loop>
+                                            <source
+                                              src="./assets/Dont-Open-Chad.mp4"
+                                              type="video/mp4"
+                                            />
+                                          </video>
+                                    </div>
+                                    <div class="modal-footer">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                         </div>
                     </div>
                 </div>
