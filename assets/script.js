@@ -719,7 +719,7 @@ function showModal(modal) {
 
 //addEventListener specialSuprise
 
-// $("specialVideo").prop("muted", true);
+$("specialVideo").prop("muted", true);
 $("#specialSurprise").on("click", function () {
     var vid = document.getElementById("specialVideo");
     vid.autoplay = true;
