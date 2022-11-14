@@ -1,42 +1,72 @@
-# Project 1 (Name Of Project When We Decide On One)
+# **Urban Info**
 
 ## Purpose Of The Project
-The idea of this project is to educate the user with details pertaining to major urban areas. It displays a variety of area qualites that the user can click to dispay futher detailed qualites of that specific area and the statistics associated with them. 
+This project was created to be interesting and intereative. Giving a full diplay of our current coding skills and abilities. The idea of this project was to educate the user with details pertaining to major urban areas. It displays a variety of area qualites that the user can click to dispay futher detailed information of that specific area and the statistics associated with them. 
 
 ## Functionality
-This website works by typing in a name of a major urban area into the search bar. This seacrch bar does offer auto-complete of urban area names depending on the letters inputed. 
+
+On the top left of this website there will be a "Toggle Music" button that allows you to play a variety of background music while you search. A pop-up box will then appear displaying a volume slider letting you adjust the volume and select a variety of backgroung music that you would like to play.
+
+The top right of this website displays a "Meet the Team" button that will display each collaburators information for Github and Linken.  
+
+This website works by typing in a name of a major urban area into the search bar. The seacrch bar offers auto-complete of urban area names depending on the letters inputed. 
+
+There is a history section under the search bar that will save your searches. It will save them even if you exit the page and comeback. 
+
+You can simply click any of the recent searches done to switch between them without having to type them again. This feature does not save duplicate searchs. 
+
+If you would like to clear your history all you have to do is press the "Clear History" button. This will earase all the history that was gathered.
 
 After inputing or selecting a name of an urban area you will then be able to click on the area qualites that you would like further information on. 
 
 A drop down effect will then display more detailed information and statistics of the qualites associated with the area that is chosen.
-
-There is a history section under the search bar that will save your searches. You can simply click any of the recent searches done to switch between them without having to type them again. This feature does not save duplicate searchs. 
 
 
 ## Visuals
 Include vido and screenshots include link to the depolyed aplication/ Github pages
 This video shows the funtions of our websie. 
 
-<video width="1000" height="400" controls autoplay><source scr="./assets/Project-1.mp4" type="video/mp4" alt="Video is of a walkthorugh on the website and its functions.">
+<video  width="1000" height="400" controls autoplay>
+<source scr="PLACEHOLDER" type="video/mp4" alt="Video is of a walkthorugh on the website and its functions.">
 Your browser does not support HTML video.
 </video>
 
-
-
-
 ## Support
-If you need assistance with working this website or it breaks please feel free to reach out the following people. 
+If you would like assistance with this website or it breaks please feel free to reach out to the following collaborators on GitHub. 
 
-Information on developers / Add teammates names and github info via link (ask permission) / If you want to collab contact us / 
+- [Noah Fajarda](https://github.com/noahfajarda)
+- [Brandon Kylely](https://github.com/brandonkylely)
+- [Logan Senn](https://github.com/Lsenn404)
+- [Ennis Qazza](https://github.com/aqazza) 
+- [April Viramontes](https://github.com/AViramontes)
 
 ## Roadmap
-We want to add additional information to the urban areas with more indepth information on the salaries of the areas / Future updates 
+The direction for any future development on this project will be noted as the following: 
 
-## List of Resources
-List of languages used and apis working with / Info
+- Including area images
+- Adding job salories and their statistics
+- Having a side-by-side comparison of urban areas
+- Generaring charts based off the data information that is pulled from the api
 
-## Author and Acknowledgement 
-Showing appriciation to who you have taken code from and given insight one / Like api, stack overflow, youtube (This piece of code was taken from this website for this funtionality)
+## List of Resources & Achknowledgements
+The follwing information will the a list of languages, apis, and sites that were used in creating this project.
 
-## License
-This is currently no appicable. 
+### Languages & Frame Works Used: 
+
+- HTML
+- CSS
+- Javascript
+- Python
+- Bootstrap
+- JQuery
+- Google Fonts
+
+### API
+This is the [site](https://developers.teleport.org/api/) that provided the API information that we used. The Teleport API provides data and statistics based on different locations (i.e. Urban Areas), such as air pollution, labor restrictions, cleanliness, and income tax. There is also additional data in regards to these topics, such as salories for different occupations. 
+
+### Sites
+This is a list of sites that we used or copied code from and why. 
+
+- [W3schools](https://www.w3schools.com/howto/howto_js_autocomplete.asp) (Used code to create the auto-complete search bar)
+- [Stack Overflow](https://stackoverflow.com/) (Used to determine implementation methods for additional ideas)
+
