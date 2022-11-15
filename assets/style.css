@@ -177,8 +177,8 @@ span {
 /* transparency & color for accordion upon click */
 /* remove later if unwanted */
 .accordion {
-    /* --bs-accordion-bg: none; */
-    /* --bs-accordion-active-bg: white; */
+    --bs-accordion-bg: rgba(17, 0, 255, 0.4);
+    --bs-accordion-active-bg: white;
 }
 
 .accordion-body {
