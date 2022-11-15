@@ -183,7 +183,7 @@ span {
 
 .accordion-body {
     /* color: white; */
-    /* font-size: 30px; */
+    font-size: 20px;
 }
 
 /* style modal */
@@ -310,6 +310,10 @@ span {
     text-align: center;
     padding: 10px;
     padding-bottom: 15px;
+    color: white;
+    font-size: 40px;
+    font-family: "Permanent Marker", cursive;
+    -webkit-text-stroke: 1px black; /* width and color */
 }
 
 /* Style the video: 100% width and height to cover the entire window */
