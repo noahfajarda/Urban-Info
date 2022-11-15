@@ -1,125 +1,70 @@
-# project1
+# **Urban Info**
 
-# 07 Project 1: Interactive Front-End Application
+## Purpose Of The Project
+This project was created to be interesting and intereative. Giving a full diplay of our current coding skills and abilities. The idea of this project was to educate the user with details pertaining to major urban areas. It displays a variety of area qualites that the user can click to dispay futher detailed information of that specific area and the statistics associated with them. 
 
-At the conclusion of each phase of this course, you’ll work with a group of your fellow students to create a **project**. A project is collaborative work among a group of developers to create an application that solves a real-world problem. Projects model the experience you’ll encounter in every development role at any company, from large multinational businesses to small startups. Coding is collaborative.
+## Functionality
 
-A project is a bit different from the Challenge assignments you’ve worked on so far. One of the biggest differences is that you’ll no longer build an application by yourself! This has some advantages&mdash;you won’t have to do all of the work, you can divide up duties, and you can share skills and knowledge with other developers and lean on their strengths. This can also be challenging if you’re used to working alone. Constant communication and time management are just two of the skills you’ll need to practice to make sure everyone in your group works together to complete the project.
+The top right of this website displays a "Meet the Team" button that will display each collaburators information for Github and LinkedIn.  
 
-Projects won’t provide you with a user story or acceptance criteria, because you and your group will create them once you decide which real-world problem your application will solve. This lack of constraints can be freeing in a way, because you have room to build what you want, but it also means that you have to decide what those constraints are before you can start working.
+This website works by typing in a name of a major urban area into the search bar. The seacrch bar offers auto-complete of urban area names depending on the letters inputed. 
 
-Finally, a project requires a presentation, because you’re trying to convince an audience that it serves a purpose. Your instructional staff and fellow students are investors, and you’re pitching your creation to them&mdash;an experience that developers are required to do frequently. Your presentation is just as important as the actual project, so take it just as seriously.
+There is a history section under the search bar that will save your searches. It will save them even if you exit the page and come back. 
 
-## Project Requirements
+You can simply click any of the recent searches done to view urban area data without time loss. This feature does not save duplicate searches. 
 
-You and your group will use everything you’ve learned over the past six modules to create a real-world front-end application that you’ll be able to showcase to potential employers. The user story and acceptance criteria will depend on the project that you create, but your project must fulfil the following requirements:
+If you would like to clear your history, all you have to do is press the "Clear History" button. This will erase all the urban area history that was gathered.
 
--   Use a CSS framework other than Bootstrap.
+After inputing or selecting a name of an urban area, you will then be able to click on the area quality categories that you would like further information on. 
 
--   Be deployed to GitHub Pages.
+A drop down effect will then display more detailed information and statistics of the qualites associated with the area that is chosen.
 
--   Be interactive (i.e., accept and respond to user input).
 
--   Use at least two [server-side APIs](https://coding-boot-camp.github.io/full-stack/apis/api-resources).
+## Visuals
+Include vido and screenshots include link to the depolyed aplication/ Github pages
+This video shows the funtions of our websie. 
 
--   Does not use alerts, confirms, or prompts (use modals).
+<video  width="1000" height="400" controls autoplay>
+<source scr="PLACEHOLDER" type="video/mp4" alt="Video is of a walkthorugh on the website and its functions.">
+Your browser does not support HTML video.
+</video>
 
--   Use client-side storage to store persistent data.
+## Support
+If you would like assistance with this website or it breaks please feel free to reach out to the following collaborators on GitHub. 
 
--   Be responsive.
+- [Noah Fajarda](https://github.com/noahfajarda)
+- [Brandon Kylely](https://github.com/brandonkylely)
+- [Logan Senn](https://github.com/Lsenn404)
+- [Ennis Qazza](https://github.com/aqazza) 
+- [April Viramontes](https://github.com/AViramontes)
 
--   Have a polished UI.
+## Roadmap
+The direction for any future development on this project will be noted as the following: 
 
--   Have a clean repository that meets quality coding standards (file structure, naming conventions, follows best practices for class/id naming conventions, indentation, quality comments, etc.).
+- Including area images
+- Adding job salaries and their statistics
+- Having a side-by-side comparison of urban areas
+- Generating charts based off the data information that is pulled from the api
 
--   Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
+## List of Resources & Achknowledgements
+The follwing information will the a list of languages, apis, and sites that were used in creating this project.
 
-## Presentation Requirements
+### Languages & Frame Works Used: 
 
-Use this [project presentation template](https://docs.google.com/presentation/d/10QaO9KH8HtUXj__81ve0SZcpO5DbMbqqQr4iPpbwKks/edit?usp=sharing) to address the following:
+- HTML
+- CSS
+- Javascript
+- Python
+- Bootstrap
+- JQuery
+- Google Fonts
 
--   Elevator pitch: a one minute description of your application
+### API
+This is the [site](https://developers.teleport.org/api/) that provided the API information that we used. The Teleport API provides data and statistics based on different locations (i.e. Urban Areas), such as air pollution, labor restrictions, cleanliness, and income tax. There is also additional data in regards to these topics, such as salories for different occupations. 
 
--   Concept: What is your user story? What was your motivation for development?
+### Sites
+This is a list of sites that we used or copied code from and why. 
 
--   Process: What were the technologies used? How were tasks and roles broken down and assigned? What challenges did you encounter? What were your successes?
+- [W3schools](https://www.w3schools.com/howto/howto_js_autocomplete.asp) (Used code to create the auto-complete search bar)
+- [Stack Overflow](https://stackoverflow.com/) (Used to determine implementation methods for additional ideas)
 
--   Demo: Show your stuff!
-
--   Directions for Future Development
-
--   Links to the deployed application and the GitHub repository
-
-## Grading Requirements
-
-This project is graded based on the following criteria:
-
-### Technical Acceptance Criteria: 25%
-
--   Satisfies the following code requirements:
-
-    -   Application uses at least two [server-side APIs](https://coding-boot-camp.github.io/full-stack/apis/api-resources)
-
-    -   Application uses client-side storage to store persistent data.
-
-    -   Application doesn't use JS alerts, prompts, or confirms (uses modals instead).
-
-    -   Application uses a CSS framework other than Bootstrap.
-
-    -   Application is interactive (accepts and responds to user input)
-
-### Concept 10%
-
--   Application should be a unique and novel idea.
-
--   Your group should clearly and concisely articulate your project idea.
-
-### Deployment: 20%
-
--   Application deployed at live URL and loads with no errors.
-
--   Application GitHub URL submitted.
-
-### Repository Quality: 10%
-
--   Repository has a unique name.
-
--   Repository follows best practices for file structure and naming conventions.
-
--   Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
--   Repository contains multiple descriptive commit messages.
-
--   Repository contains a quality README file with description, screenshot, and link to deployed application.
-
-### Application Quality: 15%
-
--   Application user experience is intuitive and easy to navigate.
-
--   Application user interface style is clean and polished.
-
--   Application is responsive.
-
-### Presentation 10%
-
--   Your group should present using a slide deck.
-
--   Every group member should speak during the presentation.
-
--   Your presentation should follow the [Project Presentation Template](https://docs.google.com/presentation/d/10QaO9KH8HtUXj__81ve0SZcpO5DbMbqqQr4iPpbwKks/edit?usp=sharing).
-
-### Collaboration 10%
-
--   There are no major disparities in the number of GitHub contributions between group members.
-
-## How to Submit Your Interactive Front-End Project
-
-**Each member of your group** is required to submit the following for review:
-
--   The URL of the deployed application.
-
--   The URL of the GitHub repository, with a unique name and a README describing the project.
-
----
-
-© 2022 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
