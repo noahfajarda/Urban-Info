@@ -649,13 +649,15 @@ i = 0;
 for (var [key, value] of Object.entries(audioMarkers)) {
     // audio label
     $("#music1").append(
-        `<p class='musicHeader'>Background Music #${i + 1}</p>`
+        `<div class='musicHeaderContainer'><p class='musicHeader'>Background Music #${
+            i + 1
+        }</p></div>`
     );
     // add audio button setting "music file name" to ID of button
     $("#music1").append(
-        `<button title="${key
+        `<div class='musicButtonContainer'><button title="${key
             .split("-")
-            .join(" ")}" class='audioBtn' id='${key}'>Play</button>`
+            .join(" ")}" class='audioBtn' id='${key}'>Play</button></div>`
     );
     $("#music1").append(`<hr>`);
     i++;
@@ -700,4 +702,28 @@ buttons.forEach((button) => {
             audioMarkers[button.id][1].volume = e.currentTarget.value / 100;
         }
     });
+});
+
+Array.from(document.getElementsByClassName("showmodal")).forEach((e) => {
+    e.addEventListener("click", function (element) {
+        element.preventDefault();
+        if (e.hasAttribute("data-show-modal")) {
+            showModal(e.getAttribute("data-show-modal"));
+        }
+    });
+});
+// Show modal dialog
+function showModal(modal) {
+    const mid = document.getElementById(modal);
+    let myModal = new bootstrap.Modal(mid);
+    myModal.show();
+}
+
+//addEventListener specialSuprise
+
+$("specialVideo").prop("muted", true);
+$("#specialSurprise").on("click", function () {
+    var vid = document.getElementById("specialVideo");
+    vid.autoplay = true;
+    vid.muted = false;
 });

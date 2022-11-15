@@ -183,13 +183,13 @@ span {
 
 .accordion-body {
     /* color: white; */
-    /* font-size: 30px; */
+    font-size: 20px;
 }
 
 /* style modal */
 
 .modal-header {
-    font-family: Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    /* font-family: Haettenschweiler, "Arial Narrow Bold", sans-serif; */
     background: linear-gradient(135deg, hsl(300, 100%, 61%), hsl(0, 100%, 52%));
     /* box-shadow: 0 1rem 2rem #000a; */
 }
@@ -201,15 +201,9 @@ span {
     background: linear-gradient(135deg, hsl(300, 100%, 61%), hsl(0, 100%, 52%));
     /* font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; */
 }
-
-/* .mttUl {
-
+.nav-link {
+    -webkit-text-stroke: 1px black; /* width and color */
 }
-
-.mttLi {
-
-} 
-*/
 .catTitle {
     color: red;
     font-weight: bolder;
@@ -225,13 +219,11 @@ span {
     color: purple;
 }
 
-
 #footerButtons {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
-
 
 .accordionCatText {
     color: #00c2cb;
@@ -270,13 +262,17 @@ span {
     transition: opacity 0.2s;
     font-family: "Permanent Marker", cursive;
 }
+.musicButtonContainer {
+    text-align: center;
+}
+
 .audioBtn:hover {
     cursor: pointer;
     background: #720b81;
 }
 
 #music1 {
-    justify-content: end;
+    justify-content: center;
 }
 
 .musicHeader {
@@ -285,6 +281,12 @@ span {
     padding-right: 69px;
     font-family: "Permanent Marker", cursive;
 }
+
+.musicHeaderContainer {
+    text-align: center;
+    margin-left: 40px;
+}
+
 .accordion-button.collapsed::after {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
 }
@@ -308,6 +310,10 @@ span {
     text-align: center;
     padding: 10px;
     padding-bottom: 15px;
+    color: white;
+    font-size: 40px;
+    font-family: "Permanent Marker", cursive;
+    -webkit-text-stroke: 1px black; /* width and color */
 }
 
 /* Style the video: 100% width and height to cover the entire window */
