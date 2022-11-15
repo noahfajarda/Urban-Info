@@ -19,15 +19,13 @@ After inputing or selecting a name of an urban area, you will then be able to cl
 
 A drop down effect will then display more detailed information and statistics of the qualites associated with the area that is chosen.
 
+To find the definition information for the qualities within the area categories press the "Date Legend" button. This will explain the statistics. 
+
 
 ## Visuals
-Include vido and screenshots include link to the depolyed aplication/ Github pages
-This video shows the funtions of our websie. 
+Ihis video shows the funtions of our websie. 
 
-<video  width="1000" height="400" controls autoplay>
-<source scr="PLACEHOLDER" type="video/mp4" alt="Video is of a walkthorugh on the website and its functions.">
-Your browser does not support HTML video.
-</video>
+<img src="ezgif.com-gif-maker.gif" type="video/mp4" alt="Video is of a walkthorugh on the website and its functions.">
 
 ## Support
 If you would like assistance with this website or it breaks please feel free to reach out to the following collaborators on GitHub. 
@@ -67,4 +65,3 @@ This is a list of sites that we used or copied code from and why.
 
 - [W3schools](https://www.w3schools.com/howto/howto_js_autocomplete.asp) (Used code to create the auto-complete search bar)
 - [Stack Overflow](https://stackoverflow.com/) (Used to determine implementation methods for additional ideas)
-
