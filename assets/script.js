@@ -649,13 +649,15 @@ i = 0;
 for (var [key, value] of Object.entries(audioMarkers)) {
     // audio label
     $("#music1").append(
-        `<p class='musicHeader'>Background Music #${i + 1}</p>`
+        `<div class='musicHeaderContainer'><p class='musicHeader'>Background Music #${
+            i + 1
+        }</p></div>`
     );
     // add audio button setting "music file name" to ID of button
     $("#music1").append(
-        `<button title="${key
+        `<div class='musicButtonContainer'><button title="${key
             .split("-")
-            .join(" ")}" class='audioBtn' id='${key}'>Play</button>`
+            .join(" ")}" class='audioBtn' id='${key}'>Play</button></div>`
     );
     $("#music1").append(`<hr>`);
     i++;

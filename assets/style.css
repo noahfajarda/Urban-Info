@@ -201,15 +201,9 @@ span {
     background: linear-gradient(135deg, hsl(300, 100%, 61%), hsl(0, 100%, 52%));
     /* font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; */
 }
-
-/* .mttUl {
-
+.nav-link {
+    -webkit-text-stroke: 1px black; /* width and color */
 }
-
-.mttLi {
-
-} 
-*/
 .catTitle {
     color: red;
     font-weight: bolder;
@@ -243,7 +237,6 @@ span {
     font-weight: bold;
     font-size: 40px;
     text-align: center;
-    
 }
 
 #modalBtn {
@@ -269,13 +262,17 @@ span {
     transition: opacity 0.2s;
     font-family: "Permanent Marker", cursive;
 }
+.musicButtonContainer {
+    text-align: center;
+}
+
 .audioBtn:hover {
     cursor: pointer;
     background: #720b81;
 }
 
 #music1 {
-    justify-content: end;
+    justify-content: center;
 }
 
 .musicHeader {
@@ -283,6 +280,11 @@ span {
     padding-left: 30px;
     padding-right: 69px;
     font-family: "Permanent Marker", cursive;
+}
+
+.musicHeaderContainer {
+    text-align: center;
+    margin-left: 40px;
 }
 
 .accordion-button.collapsed::after {
