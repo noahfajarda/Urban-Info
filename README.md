@@ -26,7 +26,7 @@ To find the definition information for the qualities within the area categories 
 
 Ihis video shows the funtions of our websie.
 
-<img src="application-demo.gif" type="video/mp4" alt="Video is of a walkthorugh on the website and its functions.">
+<img src="./assets/images/application-demo.gif" type="video/mp4" alt="Video is of a walkthorugh on the website and its functions.">
 
 ## Support
 
