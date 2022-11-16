@@ -637,11 +637,13 @@ var musicFiles = [
 //     "music file name": [isPlaying, mp3_file_path]
 // }
 for (var i = 0; i < musicFiles.length; i++) {
-    audioMarkers[musicFiles[i]] = [
-        false,
-        new Audio(`./assets/music/${musicFiles[i]}.mp3`),
-    ];
+    audioMarkers[musicFiles[i]] = {
+        isPlaying: false,
+        audio: new Audio(`./assets/music/${musicFiles[i]}.mp3`),
+    };
 }
+
+audioMarkers.currentlyPlaying = null;
 
 // make 'i' global to display music # on page
 i = 0;
@@ -669,31 +671,39 @@ var volume = document.querySelector("#volume");
 
 // give an event listener for each iterative button
 buttons.forEach((button) => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", (e) => {
         // when user clicks on any of the buttons, iterate through all music files
-        for (var i = 0; i < musicFiles.length; i++) {
-            // see if the button id matches any one of the music files
-            if (musicFiles[i] == button.id) {
-                // if so, check if the song is playing
-                if (audioMarkers[button.id][0] == false) {
-                    // if the song isn't playing, play the song on a loop
-                    // and idicate that the song is playing
-                    audioMarkers[button.id][1].play();
-                    audioMarkers[button.id][0] = true;
-                    audioMarkers[button.id][1].loop = true;
-                    // change the text of that button and show the speaker icon
-                    button.textContent = "Pause";
-                    speakerIcon.css("display", "block");
-                } else if (audioMarkers[button.id][0] == true) {
-                    // if the song is playing, pause the song
-                    // and idicate that the song is not playing
-                    audioMarkers[button.id][1].pause();
-                    audioMarkers[button.id][0] = false;
-                    button.textContent = "Play";
-                    speakerIcon.css("display", "none");
-                }
-            }
+        // for (var i = 0; i < musicFiles.length; i++) {
+        //     // see if the button id matches any one of the music files
+        //     if (musicFiles[i] == button.id) {
+        //         // if so, check if the song is playing
+        //         if (audioMarkers[button.id][0] == false) {
+        //             // if the song isn't playing, play the song on a loop
+        //             // and idicate that the song is playing
+        //             audioMarkers[button.id][1].play();
+        //             audioMarkers[button.id][0] = true;
+        //             audioMarkers[button.id][1].loop = true;
+        //             // change the text of that button and show the speaker icon
+        //             button.textContent = "Pause";
+        //             speakerIcon.css("display", "block");
+        //         } else if (audioMarkers[button.id][0] == true) {
+        //             // if the song is playing, pause the song
+        //             // and idicate that the song is not playing
+        //             audioMarkers[button.id][1].pause();
+        //             audioMarkers[button.id][0] = false;
+        //             button.textContent = "Play";
+        //             speakerIcon.css("display", "none");
+        //         }
+        //     }
+        // }
+        audioMarkers[e.target.id].audio.play();
+        e.target.innerText = "Pause";
+        if (audioMarkers.currentlyPlaying) {
+            audioMarkers[audioMarkers.currentlyPlaying].audio.pause();
+            $(`#${audioMarkers.currentlyPlaying}`).text("Play");
         }
+        audioMarkers.currentlyPlaying = e.target.id;
+        //Edge case -
     });
 
     // update the volume when the slider is moved
