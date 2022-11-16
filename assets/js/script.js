@@ -668,12 +668,12 @@ for (var [key, value] of Object.entries(audioMarkers)) {
 }
 
 // select all buttons & volume slider
-const buttons = document.querySelectorAll(".audioBtn");
-var volume = document.querySelector("#volume");
+const buttons = $(".audioBtn");
+var volume = $("#volume");
 
 // give an event listener for each iterative button
-buttons.forEach((button) => {
-    button.addEventListener("click", (e) => {
+buttons.each(function () {
+    $(this).on("click", (e) => {
         audioMarkers[e.target.id].audio.play();
         e.target.innerText = "Pause";
         // currentlyPlaying will always contain the id of the song
@@ -686,7 +686,7 @@ buttons.forEach((button) => {
     });
 
     // update the volume when the slider is moved
-    volume.addEventListener("input", (e) => {
+    volume.on("input", (e) => {
         for (var i = 0; i < musicFiles.length; i++) {
             audioMarkers[button.id][1].volume = e.currentTarget.value / 100;
         }
@@ -716,3 +716,5 @@ $("#specialSurprise").on("click", function () {
     vid.autoplay = true;
     vid.muted = false;
 });
+var vid = document.getElementById("specialVideo");
+console.log(vid);
