@@ -625,7 +625,7 @@ var musicFiles = [
     "BRENT-FAIYAZ-Too-Fast",
     "JHENE-AIKO-Tryna-Smoke",
     "WOLFTYLA-All-Tinted",
-    "CHILDISH-GAMBINO-Bonfire",
+    "CHILDISH-GAMBINO-Redbone",
     "CHILDISH-GAMBINO-This-Is-America",
     "STEVE-LACY-Bad-Habit-Remix-LOL",
     "BOBBY-DARIN-Beyond-The-Sea",
