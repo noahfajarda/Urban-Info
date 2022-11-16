@@ -272,12 +272,20 @@ span {
     background: #720b81;
 }
 
+.songTitle {
+    margin-right: 42px;
+    color: rgb(77, 76, 76);
+    font-size: 15px;
+    font-family: "Permanent Marker", cursive;
+}
+
 #music1 {
     justify-content: center;
 }
 
 .musicHeader {
     display: inline;
+    font-size: 25px;
     padding-left: 30px;
     padding-right: 69px;
     font-family: "Permanent Marker", cursive;
