@@ -621,6 +621,7 @@ var audioMarkers = {};
 // if adding new mp3 files to 'music' folder, add the name of the file to 'musicFiles' array
 var musicFiles = [
     "THE-WEEKND-Out-Of-Time",
+    "LUPE-FIASCO-Daydreamin",
     "LOGIC-Indica-Badu",
     "BRENT-FAIYAZ-Too-Fast",
     "JHENE-AIKO-Tryna-Smoke",
